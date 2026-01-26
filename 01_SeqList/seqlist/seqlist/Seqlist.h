@@ -12,3 +12,4 @@ typedef struct SeqList
 }SL;
 
 void SLInit(SL* ps);
+void SLDestroy(SL* ps);

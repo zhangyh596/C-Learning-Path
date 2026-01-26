@@ -6,6 +6,7 @@ void SLTest01()
 {
 	SL s1;
 	SLInit(&s1);
+	SLDestroy(&s1);
 }
 
 int main()

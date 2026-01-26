@@ -9,4 +9,15 @@ void SLInit(SL* ps)
 	ps->size = ps->capacity = 0;
 }
 
+//Ë³Ðò±íÏú»Ù
+void SLDestroy(SL* ps)
+{
+	if (ps->a != NULL)
+	{
+		free(ps->a);
+	}
+	ps->a = NULL;
+	ps->size = ps->capacity = 0;
+}
+
 
