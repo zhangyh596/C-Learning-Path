@@ -1,6 +1,8 @@
 #pragma once
 
 #include <stdio.h>
+#include <assert.h>
+#include <stdlib.h>
 
 typedef int SLDataType;
 
@@ -13,3 +15,6 @@ typedef struct SeqList
 
 void SLInit(SL* ps);
 void SLDestroy(SL* ps);
+void SLCheckCapacity(SL* ps);
+void SLPushBack(SL* ps, SLDataType x);
+void SLPushFront(SL* ps, SLDataType x);
