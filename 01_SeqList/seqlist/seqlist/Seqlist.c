@@ -21,6 +21,17 @@ void SLDestroy(SL* ps)
 	ps->a = NULL;
 	ps->size = ps->capacity = 0;
 }
+
+//顺序表的打印
+void SLPrint(SL s)
+{
+	for (int i = 0; i < s.size; i++)
+	{
+		printf("%d ", s.a[i]);
+	}
+	printf("\n");
+}
+
 //顺序表容量检查
 void SLCheckCapacity(SL* ps)
 {
@@ -38,6 +49,7 @@ void SLCheckCapacity(SL* ps)
 		ps->capacity = newCapacity;
 	}
 }
+
 //顺序表尾插
 void SLPushBack(SL* ps, SLDataType x)
 {
@@ -47,4 +59,15 @@ void SLPushBack(SL* ps, SLDataType x)
 	ps->size++;
 }
 
-
+//顺序表头插
+void SLPushFront(SL* ps, SLDataType x)
+{
+	assert(ps);
+	SLCheckCapacity(ps);
+	for (int i = ps->size; i > 0; i--)
+	{
+		ps->a[i] = ps->a[i - 1];//从后往前移动使整体向后移动
+	}
+	ps->a[0] = x;
+	ps->size++;
+}

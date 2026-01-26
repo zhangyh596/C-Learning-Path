@@ -7,6 +7,8 @@ void SLTest01()
 	SL s1;
 	SLInit(&s1);
 	SLPushBack(&s1, 5);
+	SLPushFront(&s1, 1);
+	SLPrint(s1);
 	SLDestroy(&s1);
 }
 

@@ -15,6 +15,7 @@ typedef struct SeqList
 
 void SLInit(SL* ps);
 void SLDestroy(SL* ps);
+void SLPrint(SL s);
 void SLCheckCapacity(SL* ps);
 void SLPushBack(SL* ps, SLDataType x);
 void SLPushFront(SL* ps, SLDataType x);
