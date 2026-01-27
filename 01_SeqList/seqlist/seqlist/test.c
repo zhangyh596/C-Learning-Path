@@ -19,8 +19,23 @@ void SLTest01()
 	SLDestroy(&s1);
 }
 
+void SLTest02()
+{
+	SL s2;
+	SLInit(&s2);
+	SLPushBack(&s2, 1);
+	SLPushBack(&s2, 2);
+	SLPushBack(&s2, 3);
+	SLPushBack(&s2, 4);
+	SLPrint(s2);
+	SLInsert(&s2, 0, 5);
+	SLInsert(&s2, s2.size, 6);
+	SLPrint(s2);
+	SLDestroy(&s2);
+}
 int main()
 {
-	SLTest01();
+	//SLTest01();
+	SLTest02();
 	return 0;
 }

@@ -91,3 +91,17 @@ void SLPopFront(SL* ps)
 	}
 	ps->size--;
 }
+
+//顺序表任意位置之前插入
+void SLInsert(SL* ps, int pos, SLDataType x)
+{
+	assert(ps);
+	assert(pos >= 0 && pos <= ps->size);
+	SLCheckCapacity(ps);
+	for (int i = ps->size; i > pos; i--)
+	{
+		ps->a[i] = ps->a[i - 1];
+	}
+	ps->a[pos] = x;
+	ps->size++;
+}

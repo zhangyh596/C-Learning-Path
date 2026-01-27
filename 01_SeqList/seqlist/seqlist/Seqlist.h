@@ -21,3 +21,4 @@ void SLPushBack(SL* ps, SLDataType x);
 void SLPushFront(SL* ps, SLDataType x);
 void SLPopback(SL* ps);
 void SLPopFront(SL* ps);
+void SLInsert(SL* ps, int pos, SLDataType x);
