@@ -79,3 +79,15 @@ void SLPopback(SL* ps)
 	assert(ps->size > 0);
 	ps->size--;
 }
+
+//Ë³Ðò±íÍ·É¾
+void SLPopFront(SL* ps)
+{
+	assert(ps);
+	assert(ps->size > 0);
+	for (int i = 0; i < ps->size - 1; i++)
+	{
+		ps->a[i] = ps->a[i + 1];
+	}
+	ps->size--;
+}

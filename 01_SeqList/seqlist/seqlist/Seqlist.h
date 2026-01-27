@@ -20,4 +20,4 @@ void SLCheckCapacity(SL* ps);
 void SLPushBack(SL* ps, SLDataType x);
 void SLPushFront(SL* ps, SLDataType x);
 void SLPopback(SL* ps);
-void SLPopfront(SL* ps);
+void SLPopFront(SL* ps);
