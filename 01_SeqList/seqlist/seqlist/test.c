@@ -31,6 +31,10 @@ void SLTest02()
 	SLInsert(&s2, 0, 5);
 	SLInsert(&s2, s2.size, 6);
 	SLPrint(s2);
+	SLErase(&s2, 0);
+	SLPrint(s2);
+	SLErase(&s2, s2.size);
+	SLPrint(s2);
 	SLDestroy(&s2);
 }
 int main()
