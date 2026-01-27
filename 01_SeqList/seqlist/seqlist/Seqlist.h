@@ -23,3 +23,4 @@ void SLPopback(SL* ps);
 void SLPopFront(SL* ps);
 void SLInsert(SL* ps, int pos, SLDataType x);
 void SLErase(SL* ps, int pos);
+int SLFind(SL* ps, SLDataType x);

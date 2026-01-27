@@ -33,8 +33,17 @@ void SLTest02()
 	SLPrint(s2);
 	SLErase(&s2, 0);
 	SLPrint(s2);
-	SLErase(&s2, s2.size);
+	SLErase(&s2, s2.size - 1);
 	SLPrint(s2);
+	int find = SLFind(&s2, 4);
+	if (find < 0)
+	{
+		printf("没有找到\n");
+	}
+	else
+	{
+		printf("找到了，下标是%d\n", find);
+	}
 	SLDestroy(&s2);
 }
 int main()
