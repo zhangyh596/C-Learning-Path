@@ -51,7 +51,7 @@ void SLCheckCapacity(SL* ps)
 }
 
 //Ë³Ðò±íÎ²²å
-void SLpushBack(SL* ps)
+void SLPushBack(SL* ps, SLDataType x)
 {
 	assert(ps);
 	SLCheckCapacity(ps);
@@ -59,3 +59,17 @@ void SLpushBack(SL* ps)
 	ps->size++;
 }
 
+//Ë³Ðò±íÍ·²å
+void SLPushFront(SL* ps, SLDataType x)
+{
+	assert(ps);
+	SLCheckCapacity(ps);
+	for (int i = ps->size; i > 0; i--)
+	{
+		ps->a[i] = ps->a[i - 1];
+	}
+	ps->a[0] = x;
+	ps->size++;
+}
+
+//
