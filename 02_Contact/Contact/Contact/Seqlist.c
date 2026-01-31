@@ -21,3 +21,13 @@ void SLDeatroy(SL* ps)
 	ps->a = NULL;
 	ps->size = ps->capacity = 0;
 }
+
+//Ë³Ðò±íµÄ´òÓ¡
+void SLPrint(SL s)
+{
+	for (int i = 0; i < s.size; i++)
+	{
+		printf("%d ", s.a[i]);
+	}
+	printf("\n");
+}
