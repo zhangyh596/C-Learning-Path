@@ -107,3 +107,13 @@ void SLInsert(SL* ps, int pos, SLDataType x)
 }
 
 //顺序表任意位置删除
+void SLErase(SL* ps, int pos)
+{
+	assert(ps);
+	assert(pos >= 0 && pos < ps->size);
+	for (int i = pos; i < ps->size - 1; i++)
+	{
+		ps->a[i] = ps->a[i + 1];
+	}
+	ps->size--;
+}
