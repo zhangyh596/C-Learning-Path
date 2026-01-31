@@ -31,3 +31,22 @@ void SLPrint(SL s)
 	}
 	printf("\n");
 }
+
+//顺序表容量检查
+void SLCheckCapacity(SL* ps)
+{
+	assert(ps);
+	if (ps->size == ps->capacity)
+	{
+		int newCapacity = (ps->capacity == 0) ? 4 : ps->capacity * 2;
+		SLDataType* tmp = (SLDataType*)realloc(ps->a, newCapacity * sizeof(SLDataType));
+		if (tmp == NULL)
+		{
+			perror("realloc fail");
+			exit(-1);//申请失败直接退出
+		}
+		ps->a = tmp;
+		ps->capacity = newCapacity;
+	}
+}
+
