@@ -72,4 +72,11 @@ void SLPushFront(SL* ps, SLDataType x)
 	ps->size++;
 }
 
-//
+//Ë³Ðò±íÎ²É¾
+void SLPopBack(SL* ps)
+{
+	assert(ps);
+	assert(ps->size > 0);
+	ps->size--;
+}
+
