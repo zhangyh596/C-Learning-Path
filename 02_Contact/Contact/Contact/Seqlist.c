@@ -50,3 +50,12 @@ void SLCheckCapacity(SL* ps)
 	}
 }
 
+//Ë³Ðò±íÎ²²å
+void SLpushBack(SL* ps)
+{
+	assert(ps);
+	SLCheckCapacity(ps);
+	ps->a[ps->size] = x;
+	ps->size++;
+}
+
