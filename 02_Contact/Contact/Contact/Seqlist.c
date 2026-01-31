@@ -9,3 +9,15 @@ void SLInit(SL* ps)
 	ps->a = NULL;
 	ps->size = ps->capacity = 0;
 }
+
+//Ë³Ðò±íÏú»Ù
+void SLDeatroy(SL* ps)
+{
+	assert(ps);
+	if (ps->a != NULL)
+	{
+		free(ps->a);
+	}
+	ps->a = NULL;
+	ps->size = ps->capacity = 0;
+}
