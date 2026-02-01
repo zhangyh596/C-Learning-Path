@@ -2,7 +2,7 @@
 
 #include "Seqlist.h"
 
-//void  ContactTest01()
+//void ContactTest01()
 //{
 //	Contact con;
 //	ContactInit(&con);
@@ -61,5 +61,6 @@ int main()
 			break;
 		}
 	} while (op);
+	ContactDestroy(&con);
 	return 0;
 }

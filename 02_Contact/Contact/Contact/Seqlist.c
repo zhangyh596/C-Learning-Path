@@ -96,7 +96,7 @@ void SLPopFront(SL* ps)
 void SLInsert(SL* ps, int pos, SLDataType x)
 {
 	assert(ps);
-	assert(pos <= 0 && pos <= ps->size);
+	assert(pos >= 0 && pos <= ps->size);
 	SLCheckCapacity(ps);
 	for (int i = ps->size; i > pos; i--)
 	{

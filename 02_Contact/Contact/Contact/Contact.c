@@ -27,7 +27,7 @@ void ContactAdd(Contact* con)
 	printf("请输入要添加的联系人年龄：\n");
 	scanf("%d", &info.age);
 	printf("请输入要添加的联系人电话：\n");
-	scanf("%s", info.tel); 
+	scanf("%s", info.tel);
 	printf("请输入要添加的联系人住址：\n");
 	scanf("%s", info.addr);
 	SLPushBack(con, info);
