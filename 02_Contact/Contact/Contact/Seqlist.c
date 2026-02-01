@@ -11,7 +11,7 @@ void SLInit(SL* ps)
 }
 
 //顺序表销毁
-void SLDeatroy(SL* ps)
+void SLDestroy(SL* ps)
 {
 	assert(ps);
 	if (ps->a != NULL)
@@ -22,15 +22,15 @@ void SLDeatroy(SL* ps)
 	ps->size = ps->capacity = 0;
 }
 
-//顺序表的打印
-void SLPrint(SL s)
-{
-	for (int i = 0; i < s.size; i++)
-	{
-		printf("%d ", s.a[i]);
-	}
-	printf("\n");
-}
+////顺序表的打印
+//void SLPrint(SL s)
+//{
+//	for (int i = 0; i < s.size; i++)
+//	{
+//		printf("%d ", s.a[i]);
+//	}
+//	printf("\n");
+//}
 
 //顺序表容量检查
 void SLCheckCapacity(SL* ps)
@@ -118,16 +118,16 @@ void SLErase(SL* ps, int pos)
 	ps->size--;
 }
 
-//顺序表查找
-int SLFind(SL* ps, SLDataType x)
-{
-	assert(ps);
-	for (int i = 0; i < ps->size; i++)
-	{
-		if (ps->a[i] == x)
-		{
-			return i;
-		}
-	}
-	return -1;
-}
+////顺序表查找
+//int SLFind(SL* ps, SLDataType x)
+//{
+//	assert(ps);
+//	for (int i = 0; i < ps->size; i++)
+//	{
+//		if (ps->a[i] == x)
+//		{
+//			return i;
+//		}
+//	}
+//	return -1;
+//}

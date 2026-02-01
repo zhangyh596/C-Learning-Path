@@ -3,8 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include "Contact.h"
 
-typedef int SLDataType;
+typedef peoInfo SLDataType;
 
 typedef struct Seqlist
 {
@@ -14,8 +15,8 @@ typedef struct Seqlist
 }SL;
 
 void SLInit(SL* ps);
-void SLDesttoy(SL* ps);
-void SLPrint(SL s);
+void SLDestroy(SL* ps);
+//void SLPrint(SL s);
 void SLCheckCapacity(SL* ps);
 void SLPushBack(SL* ps, SLDataType x);
 void SLPushFront(SL* ps, SLDataType x);
@@ -23,4 +24,4 @@ void SLPopBack(SL* ps);
 void SLPopFront(SL* ps);
 void SLInsert(SL* ps, int pos, SLDataType x);
 void SLErase(SL* ps, int pos);
-int SLFind(SL* ps, SLDataType x);
+//int SLFind(SL* ps, SLDataType x);
