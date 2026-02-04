@@ -62,5 +62,22 @@ void SLTPushFront(SLTNode** pphead, SLTDataType x)
 void SLTPopBack(SLTNode** pphead)
 {
 	assert(pphead && *pphead);
-
+	if ((*pphead)->next == NULL)
+	{
+		free(*pphead);
+		*pphead = NULL;
+	}
+	else
+	{
+		SLTNode* prev = *pphead;
+		SLTNode* ptail = *pphead;
+		while (ptail->next)
+		{
+			prev = ptail;
+			ptail = ptail->next;
+		}
+		free(ptail);
+		ptail = NULL;
+		prev->next = NULL;
+	}
 }
