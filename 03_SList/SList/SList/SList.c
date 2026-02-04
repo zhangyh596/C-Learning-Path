@@ -48,3 +48,19 @@ void SLTPushBack(SLTNode** pphead, SLTDataType x)
 		ptail->next = newnode;
 	}
 }
+
+//单链表头插
+void SLTPushFront(SLTNode** pphead, SLTDataType x)
+{
+	assert(pphead);
+	SLTNode* newnode = SLTBuyNode(x);
+	newnode->next = *pphead;
+	*pphead = newnode;
+}
+
+//单链表尾删
+void SLTPopBack(SLTNode** pphead)
+{
+	assert(pphead && *pphead);
+
+}
