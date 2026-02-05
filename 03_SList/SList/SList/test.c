@@ -17,6 +17,7 @@ void SListTest01()
 	SLTPrint(plist);
 	SLTNode* find = SLTFind(plist, 1);
 	SLTInsert(&plist, find, 5);
+	SLTInsertAfter(find, 5);
 	SLTPrint(plist);
 	//if (find == NULL)
 	//{

@@ -128,3 +128,12 @@ void SLTInsert(SLTNode** pphead, SLTNode* pos, SLTDataType x)
 		prev->next = newnode;
 	}
 }
+
+//单链表在指定位置之后插入
+void SLTInsertAfter(SLTNode* pos, SLTDataType x)
+{
+	assert(pos);
+	SLTNode* newnode = SLTBuyNode(x);
+	newnode->next = pos->next;//必须在下一步的前面
+	pos->next = newnode;
+}
