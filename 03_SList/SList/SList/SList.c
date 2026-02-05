@@ -161,3 +161,17 @@ void SLTErase(SLTNode** pphead, SLTNode* pos)
 		pos = NULL;
 	}
 }
+
+//单链表删除指定位置之后的节点
+void SLTEraseAfter(SLTNode* pos)
+{
+	assert(pos);
+	if (pos->next == NULL)
+	{
+		return;
+	}
+	SLTNode* del = pos->next;
+	pos->next = del->next;
+	free(del);
+	del = NULL;
+}

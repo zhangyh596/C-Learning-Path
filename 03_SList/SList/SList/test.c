@@ -9,16 +9,17 @@ void SListTest01()
 	SLTPushBack(&plist, 2);
 	SLTPushBack(&plist, 3);
 	SLTPushBack(&plist, 4);
-	SLTPopBack(&plist);
-	SLTPrint(plist);
-	SLTPushFront(&plist, 6);
-	SLTPrint(plist);
-	SLTPopFront(&plist);
-	SLTPrint(plist);
+	//SLTPopBack(&plist);
+	//SLTPrint(plist);
+	//SLTPushFront(&plist, 6);
+	//SLTPrint(plist);
+	//SLTPopFront(&plist);
+	//SLTPrint(plist);
 	SLTNode* find = SLTFind(plist, 1);
 	SLTInsert(&plist, find, 5);
 	SLTInsertAfter(find, 5);
 	SLTErase(&plist, find);
+	SLTEraseAfter(find);
 	SLTPrint(plist);
 	//if (find == NULL)
 	//{
