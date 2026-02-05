@@ -22,3 +22,5 @@ typedef int SLTDataType;
  void SLTPopBack(SLTNode** pphead);
  //单链表头删
  void SLTPopFront(SLTNode** pphead);
+ //单链表查找
+ SLTNode* SLTFind(SLTNode* phead, SLTDataType x);

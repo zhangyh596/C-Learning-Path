@@ -15,6 +15,15 @@ void SListTest01()
 	SLTPrint(plist);
 	SLTPopFront(&plist);
 	SLTPrint(plist);
+	SLTNode* find = SLTFind(plist, 1);
+	if (find == NULL)
+	{
+		printf("没有找到\n");
+	}
+	else
+	{
+		printf("找到了\n");
+	}
 }
 
 int main()
