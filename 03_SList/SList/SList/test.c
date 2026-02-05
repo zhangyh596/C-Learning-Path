@@ -18,9 +18,10 @@ void SListTest01()
 	SLTNode* find = SLTFind(plist, 1);
 	SLTInsert(&plist, find, 5);
 	SLTInsertAfter(find, 5);
-	SLTErase(&plist, find);
+	//SLTErase(&plist, find);
 	SLTEraseAfter(find);
 	SLTPrint(plist);
+	SLTDestroy(&plist);
 	//if (find == NULL)
 	//{
 	//	printf("ц╩спур╣╫\n");

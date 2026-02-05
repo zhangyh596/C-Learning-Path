@@ -32,3 +32,5 @@ typedef int SLTDataType;
  void SLTErase(SLTNode** pphead, SLTNode* pos);
  //单链表删除指定位置之后的节点
  void SLTEraseAfter(SLTNode* pos);
+ //单链表销毁
+ void SLTDestroy(SLTNode** pphead);
