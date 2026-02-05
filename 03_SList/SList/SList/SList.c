@@ -81,3 +81,12 @@ void SLTPopBack(SLTNode** pphead)
 		prev->next = NULL;
 	}
 }
+
+//µ¥Á´±íÍ·É¾
+void SLTPopFront(SLTNode** pphead)
+{
+	assert(pphead && *pphead);
+	SLTNode* next = (*pphead)->next;
+	free(*pphead);
+	*pphead = next;
+}

@@ -13,6 +13,8 @@ void SListTest01()
 	SLTPrint(plist);
 	SLTPushFront(&plist, 6);
 	SLTPrint(plist);
+	SLTPopFront(&plist);
+	SLTPrint(plist);
 }
 
 int main()
