@@ -28,3 +28,7 @@ typedef int SLTDataType;
  void SLTInsert(SLTNode**pphead, SLTNode* pos, SLTDataType x);
  //单链表在指定位置之后插入
  void SLTInsertAfter(SLTNode* pos, SLTDataType x);
+ //单链表删除指定位置的节点
+ void SLTErase(SLTNode** pphead, SLTNode* pos);
+ //单链表删除指定位置之后的节点
+ void SLTEraseAfter(SLTNode* pos);

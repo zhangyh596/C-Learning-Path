@@ -137,3 +137,27 @@ void SLTInsertAfter(SLTNode* pos, SLTDataType x)
 	newnode->next = pos->next;//必须在下一步的前面
 	pos->next = newnode;
 }
+
+//单链表删除指定位置的节点
+void SLTErase(SLTNode** pphead, SLTNode* pos)
+{
+	assert(pphead && *pphead);
+	assert(pos);
+	if (pos == *pphead)
+	{
+		SLTPopFront(pphead);
+	}
+	else
+	{
+		SLTNode* prev = *pphead;
+		while (prev->next != pos)
+		{
+
+			prev = prev->next;
+			assert(prev);//防止pos不在链表里面
+		}
+		prev->next = pos->next;
+		free(pos);
+		pos = NULL;
+	}
+}
