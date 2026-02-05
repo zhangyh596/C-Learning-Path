@@ -16,14 +16,16 @@ void SListTest01()
 	SLTPopFront(&plist);
 	SLTPrint(plist);
 	SLTNode* find = SLTFind(plist, 1);
-	if (find == NULL)
-	{
-		printf("没有找到\n");
-	}
-	else
-	{
-		printf("找到了\n");
-	}
+	SLTInsert(&plist, find, 5);
+	SLTPrint(plist);
+	//if (find == NULL)
+	//{
+	//	printf("没有找到\n");
+	//}
+	//else
+	//{
+	//	printf("找到了\n");
+	//}
 }
 
 int main()
