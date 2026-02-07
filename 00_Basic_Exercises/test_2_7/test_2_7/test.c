@@ -159,5 +159,8 @@ int ysf(int n, int m)
 			count++;
 		}
 	}
-	return pcur->val;
+	int ret = pcur->val;
+	free(pcur);
+	pcur = NULL;
+	return ret;
 }
