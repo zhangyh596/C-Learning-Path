@@ -24,11 +24,11 @@ void SListTest01()
 	SLTDestroy(&plist);
 	//if (find == NULL)
 	//{
-	//	printf("没有找到\n");
+	//	printf("娌℃湁鎵惧埌\n");
 	//}
 	//else
 	//{
-	//	printf("找到了\n");
+	//	printf("鎵惧埌浜哱n");
 	//}
 }
 

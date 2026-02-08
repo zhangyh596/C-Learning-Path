@@ -9,8 +9,8 @@ typedef int SLDataType;
 typedef struct SeqList
 {
 	SLDataType* a;
-	int size;//有效数据个数
-	int capacity;//空间容量
+	int size;//鏈夋晥鏁版嵁涓暟
+	int capacity;//绌洪棿瀹归噺
 }SL;
 
 void SLInit(SL* ps);
