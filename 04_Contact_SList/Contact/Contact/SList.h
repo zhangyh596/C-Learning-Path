@@ -21,3 +21,7 @@ void SLTPushBack(SLTNode** pphead, SLTDataType x);
 void SLTPushFront(SLTNode** pphead, SLTDataType x);
 //单链表尾删
 void SLTPopBack(SLTNode** pphead);
+//单链表头删
+void SLTPopFront(SLTNode** pphead);
+//单链表查找
+SLTNode* SLTFind(SLTNode* phead, SLTDataType x);
