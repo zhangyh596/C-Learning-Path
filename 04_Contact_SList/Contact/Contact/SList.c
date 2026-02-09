@@ -3,9 +3,9 @@
 #include "SList.h"
 
 //单链表打印
-void SListPrint(SListNode* phead)
+void SListPrint(SLTNode* phead)
 {
-	SListNode* pcur = phead;
+	SLTNode* pcur = phead;
 	while (pcur != NULL)
 	{
 		printf("%d->", pcur->data);
@@ -14,17 +14,17 @@ void SListPrint(SListNode* phead)
 	printf("NULL\n");
 }
 
-//创建新节点
-SListNode* BuySListNode(SLTDataType x)
+//创建新节点（辅助函数）
+ static SLTNode* BuySLTNode(SLTDataType x)
 {
-	SListNode* newNode = (SListNode*)malloc(sizeof(SListNode));
-	if (newNode == NULL)
+	SLTNode* newnode = (SLTNode*)malloc(sizeof(SLTNode));
+	if (newnode == NULL)
 	{
 		perror("malloc fail");
 		exit(-1);
 	}
-	newNode->data = x;
-	newNode->next = NULL;
-	return newNode;
+	newnode->data = x;
+	newnode->next = NULL;
+	return newnode;
 }
 
