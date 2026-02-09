@@ -10,6 +10,7 @@ void testSList01()
 	SLTPushBack(&plist, 3);
 	SLTPushBack(&plist, 4);
 	SLTPushFront(&plist, 5);
+	SLTPopBack(&plist);
 	SLTPrint(plist);
 }
 

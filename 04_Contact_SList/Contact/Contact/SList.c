@@ -56,3 +56,27 @@ void SLTPrint(SLTNode* phead)
 	 newnode->next = *pphead;
 	 *pphead = newnode;//更新头指针
  }
+
+ //单链表尾删
+ void SLTPopBack(SLTNode** pphead)
+ {
+	 assert(pphead && *pphead);
+	 if ((*pphead)->next == NULL)
+	 {
+		 free(*pphead);
+		 *pphead = NULL;
+	 }
+	 else
+	 {
+		 SLTNode* prev = *pphead;
+		 SLTNode* ptail = *pphead;
+		 while (ptail->next != NULL)
+		 {
+			 prev = ptail;
+			 ptail = ptail->next;
+		 }
+		 free(ptail);
+		 ptail = NULL;
+		 prev->next = NULL;
+	 }
+ }

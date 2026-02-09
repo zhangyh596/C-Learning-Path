@@ -19,3 +19,5 @@ void SLTPrint(SLTNode* phead);
 void SLTPushBack(SLTNode** pphead, SLTDataType x);
 //单链表头插
 void SLTPushFront(SLTNode** pphead, SLTDataType x);
+//单链表尾删
+void SLTPopBack(SLTNode** pphead);
