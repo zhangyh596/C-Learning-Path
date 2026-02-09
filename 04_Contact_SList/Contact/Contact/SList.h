@@ -25,3 +25,5 @@ void SLTPopBack(SLTNode** pphead);
 void SLTPopFront(SLTNode** pphead);
 //单链表查找
 SLTNode* SLTFind(SLTNode* phead, SLTDataType x);
+//单链表在指定位置之前插入
+void SLTInsert(SLTNode** pphead, SLTNode* pos, SLTDataType x);

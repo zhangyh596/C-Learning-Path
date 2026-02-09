@@ -12,14 +12,7 @@ void testSList01()
 	SLTPushFront(&plist, 5);
 	SLTPopBack(&plist);
 	SLTNode* find = SLTFind(plist, 1);
-	if (find == NULL)
-	{
-		printf("没找到\n");
-	}
-	else
-	{
-		printf("找到了\n");
-	}
+	SLTInsert(&plist, find, 6);
 	SLTPrint(plist);
 }
 

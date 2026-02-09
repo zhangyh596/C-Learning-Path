@@ -104,3 +104,27 @@ SLTNode* SLTFind(SLTNode* phead, SLTDataType x)
 	}
 	return NULL;
 }
+
+//单链表在指定位置之前插入
+void SLTInsert(SLTNode** pphead, SLTNode* pos, SLTDataType x)
+{
+	assert(pphead && *pphead);
+	assert(pos);
+	SLTNode* newnode = BuySLTNode(x);
+	if (pos == *pphead)
+	{
+		SLTPushFront(pphead, x);
+	}
+	else
+	{
+		SLTNode* prev = *pphead;
+		while (prev->next != pos)
+		{
+			prev = prev->next;
+			assert(prev);//以防pos不在链表里面
+		}
+		newnode->next = pos;
+		prev->next = newnode;
+	}
+}
+
