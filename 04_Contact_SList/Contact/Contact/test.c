@@ -14,7 +14,10 @@ void testSList01()
 	SLTNode* find = SLTFind(plist, 1);
 	SLTInsert(&plist, find, 6);
 	SLTInsertAfter(find, 7);
+	//SLTErase(&plist, find);
+	SLTEraseAfter(find);
 	SLTPrint(plist);
+	SLTDestroy(&plist);
 }
 
 int main()
