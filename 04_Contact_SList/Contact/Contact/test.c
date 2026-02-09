@@ -13,6 +13,7 @@ void testSList01()
 	SLTPopBack(&plist);
 	SLTNode* find = SLTFind(plist, 1);
 	SLTInsert(&plist, find, 6);
+	SLTInsertAfter(find, 7);
 	SLTPrint(plist);
 }
 
