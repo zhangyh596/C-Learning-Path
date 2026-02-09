@@ -9,6 +9,7 @@ void testSList01()
 	SLTPushBack(&plist, 2);
 	SLTPushBack(&plist, 3);
 	SLTPushBack(&plist, 4);
+	SLTPushFront(&plist, 5);
 	SLTPrint(plist);
 }
 

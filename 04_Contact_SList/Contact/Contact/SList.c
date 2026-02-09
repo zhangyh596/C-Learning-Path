@@ -48,3 +48,11 @@ void SLTPrint(SLTNode* phead)
 	 }
  }
 
+ //单链表头插
+ void SLTPushFront(SLTNode** pphead, SLTDataType x)
+ {
+	 assert(pphead);
+	 SLTNode* newnode = BuySLTNode(x);
+	 newnode->next = *pphead;
+	 *pphead = newnode;//更新头指针
+ }
