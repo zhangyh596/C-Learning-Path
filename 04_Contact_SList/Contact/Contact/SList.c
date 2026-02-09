@@ -110,13 +110,13 @@ void SLTInsert(SLTNode** pphead, SLTNode* pos, SLTDataType x)
 {
 	assert(pphead && *pphead);
 	assert(pos);
-	SLTNode* newnode = BuySLTNode(x);
 	if (pos == *pphead)
 	{
 		SLTPushFront(pphead, x);
 	}
 	else
 	{
+		SLTNode* newnode = BuySLTNode(x);
 		SLTNode* prev = *pphead;
 		while (prev->next != pos)
 		{
@@ -149,7 +149,7 @@ void SLTErase(SLTNode** pphead, SLTNode* pos)
 	else
 	{
 		SLTNode* prev = *pphead;
-		while (prev->next != pos);
+		while (prev->next != pos)
 		{
 			prev = prev->next;
 			assert(prev);//防止pos不在链表里面
