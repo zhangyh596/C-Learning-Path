@@ -15,7 +15,7 @@ void SLTPrint(SLTNode* phead)
 }
 
 //创建新节点（辅助函数）
- static SLTNode* BuySLTNode(SLTDataType x)
+static SLTNode* BuySLTNode(SLTDataType x)
 {
 	SLTNode* newnode = (SLTNode*)malloc(sizeof(SLTNode));
 	if (newnode == NULL)
@@ -28,55 +28,64 @@ void SLTPrint(SLTNode* phead)
 	return newnode;
 }
 
- //单链表尾插
- void SLTPushBack(SLTNode** pphead, SLTDataType x)
- {
-	 assert(pphead);
-	 SLTNode* newnode = BuySLTNode(x);
-	 if (*pphead == NULL)
-	 {
-		 *pphead = newnode;
-	 }
-	 else
-	 {
-		 SLTNode* ptail = *pphead;
-		 while (ptail->next != NULL)
-		 {
-			 ptail = ptail->next;
-		 }
-		 ptail->next = newnode;
-	 }
- }
+//单链表尾插
+void SLTPushBack(SLTNode** pphead, SLTDataType x)
+{
+	assert(pphead);
+	SLTNode* newnode = BuySLTNode(x);
+	if (*pphead == NULL)
+	{
+		*pphead = newnode;
+	}
+	else
+	{
+		SLTNode* ptail = *pphead;
+		while (ptail->next != NULL)
+		{
+			ptail = ptail->next;
+		}
+		ptail->next = newnode;
+	}
+}
 
- //单链表头插
- void SLTPushFront(SLTNode** pphead, SLTDataType x)
- {
-	 assert(pphead);
-	 SLTNode* newnode = BuySLTNode(x);
-	 newnode->next = *pphead;
-	 *pphead = newnode;//更新头指针
- }
+//单链表头插
+void SLTPushFront(SLTNode** pphead, SLTDataType x)
+{
+	assert(pphead);
+	SLTNode* newnode = BuySLTNode(x);
+	newnode->next = *pphead;
+	*pphead = newnode;//更新头指针
+}
 
- //单链表尾删
- void SLTPopBack(SLTNode** pphead)
- {
-	 assert(pphead && *pphead);
-	 if ((*pphead)->next == NULL)
-	 {
-		 free(*pphead);
-		 *pphead = NULL;
-	 }
-	 else
-	 {
-		 SLTNode* prev = *pphead;
-		 SLTNode* ptail = *pphead;
-		 while (ptail->next != NULL)
-		 {
-			 prev = ptail;
-			 ptail = ptail->next;
-		 }
-		 free(ptail);
-		 ptail = NULL;
-		 prev->next = NULL;
-	 }
- }
+//单链表尾删
+void SLTPopBack(SLTNode** pphead)
+{
+	assert(pphead && *pphead);
+	if ((*pphead)->next == NULL)
+	{
+		free(*pphead);
+		*pphead = NULL;
+	}
+	else
+	{
+		SLTNode* prev = *pphead;
+		SLTNode* ptail = *pphead;
+		while (ptail->next != NULL)
+		{
+			prev = ptail;
+			ptail = ptail->next;
+		}
+		free(ptail);
+		ptail = NULL;
+		prev->next = NULL;
+	}
+}
+
+//单链表头删
+void SLTPopFront(SLTNode** pphead)
+{
+	assert(pphead && *pphead);
+	SLTNode* next = (*pphead)->next;
+	free(*pphead);
+	*pphead = next;
+}
