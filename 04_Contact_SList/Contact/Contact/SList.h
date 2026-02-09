@@ -9,11 +9,11 @@ typedef int SLTDataType;
 
 typedef struct SListNode
 {
-	int data;
-	struct Node* next;
+	SLTDataType data;
+	struct SListNode* next;
 }SLTNode;
 
 //单链表打印
-void SListPrint(SLTNode* phead);
+void SLTPrint(SLTNode* phead);
 //单链表尾插
-SLTNode* SLTPushBack(SLTNode** phead, SLTDataType x);
+void SLTPushBack(SLTNode** pphead, SLTDataType x);

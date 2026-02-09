@@ -3,7 +3,7 @@
 #include "SList.h"
 
 //单链表打印
-void SListPrint(SLTNode* phead)
+void SLTPrint(SLTNode* phead)
 {
 	SLTNode* pcur = phead;
 	while (pcur != NULL)
@@ -27,4 +27,24 @@ void SListPrint(SLTNode* phead)
 	newnode->next = NULL;
 	return newnode;
 }
+
+ //单链表尾插
+ void SLTPushBack(SLTNode** pphead, SLTDataType x)
+ {
+	 assert(pphead);
+	 SLTNode* newnode = BuySLTNode(x);
+	 if (*pphead == NULL)
+	 {
+		 *pphead = newnode;
+	 }
+	 else
+	 {
+		 SLTNode* ptail = *pphead;
+		 while (ptail->next != NULL)
+		 {
+			 ptail = ptail->next;
+		 }
+		 ptail->next = newnode;
+	 }
+ }
 
