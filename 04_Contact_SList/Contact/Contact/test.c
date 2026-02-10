@@ -38,7 +38,7 @@ void menu()
 	printf("***********************\n");
 	printf("*****1.add   2.del*****\n");
 	printf("*****3.find  4.modify**\n");
-	printf("*****5.shoe  6.exit****\n");
+	printf("*****5.show  0.exit****\n");
 	printf("***********************\n");
 }
 
