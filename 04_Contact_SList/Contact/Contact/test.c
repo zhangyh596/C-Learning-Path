@@ -26,7 +26,8 @@ void testContact02()
 	Contact* con = NULL;
 	ContactInit(&con);
 	ContactAdd(&con);
-	ContactDel(&con);
+	//ContactDel(&con);
+	ContactModify(con);
 }
 
 int main()

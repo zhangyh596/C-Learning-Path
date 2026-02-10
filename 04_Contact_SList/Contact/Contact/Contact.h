@@ -23,3 +23,5 @@ void ContactInit(Contact** ppcon);
 void ContactAdd(Contact** ppcon);
 //删除联系人
 void ContactDel(Contact** ppcon);
+//修改联系人
+void ContactModify(Contact** ppcon);

@@ -60,3 +60,30 @@ void ContactDel(Contact** ppcon)
 	SLTErase(ppcon, pos);
 	printf("删除成功\n");
 }
+
+//修改联系人
+void ContactModify(Contact* pcon)
+{
+	char name[NAME_MAX];
+	printf("请输入要修改的联系人的姓名：");
+	scanf("%s", name);
+
+	Contact* pos = FindByName(pcon, name);
+	if (pos == NULL)
+	{
+		printf("联系人不存在！\n");
+		return;
+	}
+	printf("开始修改信息\n");
+	printf("请输入新的姓名：");
+	scanf("%s", pos->data.name);
+	printf("请输入新的性别：");
+	scanf("%s", pos->data.gender);
+	printf("请输入新的年龄：");
+	scanf("%d", &pos->data.age);
+	printf("请输入新的电话：");
+	scanf("%s", pos->data.tel);
+	printf("请输入新的地址：");
+	scanf("%s", pos->data.addr);
+	printf("修改成功！\n");
+}
