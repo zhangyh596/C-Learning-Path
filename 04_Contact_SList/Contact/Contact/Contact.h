@@ -21,4 +21,5 @@ typedef struct SListNode Contact;//前置声明
 void ContactInit(Contact** ppcon);
 //添加联系人
 void ContactAdd(Contact** ppcon);
-
+//删除联系人
+void ContactDel(Contact** ppcon);

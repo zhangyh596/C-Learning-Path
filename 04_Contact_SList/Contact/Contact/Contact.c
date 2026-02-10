@@ -43,3 +43,20 @@ void ContactAdd(Contact** ppcon)
 	SLTPushBack(ppcon, info);
 	printf("添加成功！\n");
 }
+
+//删除联系人
+void ContactDel(Contact** ppcon)
+{
+	char name[NAME_MAX];
+	printf("请输入要删除的联系人的姓名：");
+	scanf("%s", name);
+
+	Contact* pos = FindByName(*ppcon, name);
+	if (pos == NULL)
+	{
+		printf("要删除的联系人不存在！\n");
+		return;
+	}
+	SLTErase(ppcon, pos);
+	printf("删除成功\n");
+}
