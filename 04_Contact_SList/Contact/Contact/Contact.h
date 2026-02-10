@@ -27,3 +27,7 @@ void ContactDel(Contact** ppcon);
 void ContactModify(Contact** ppcon);
 //查找联系人
 void ContactFind(Contact* pcon);
+//通讯录展示
+void ContactShow(Contact* pcon);
+//通讯录销毁
+void ContactDestroy(Contact** ppcon);

@@ -104,3 +104,25 @@ void ContactFind(Contact* pcon)
 		pos->data.name, pos->data.gender, pos->data.age, pos->data.tel, pos->data.addr);
 }
 
+//通讯录展示
+void ContactShow(Contact* pcon)
+{
+	Contact* pcur = pcon;
+	printf("%-10s %-5s %-4s %-15s %-20s\n", "姓名", "性别", "年龄", "电话", "地址");
+	while (pcur)
+	{
+		printf("%-10s %-5s %-4d %-15s %-20s\n",
+			pcur->data.name,
+			pcur->data.gender,
+			pcur->data.age,
+			pcur->data.tel,
+			pcur->data.addr);
+		pcur = pcur->next;
+	}
+}
+
+//通讯录销毁
+void ContactDestroy(Contact** ppcon)
+{
+	SLTDestroy(ppcon);
+}

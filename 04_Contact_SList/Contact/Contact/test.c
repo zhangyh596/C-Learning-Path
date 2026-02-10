@@ -29,6 +29,8 @@ void testContact02()
 	//ContactDel(&con);
 	ContactModify(con);
 	ContactFind(con);
+	ContactShow(con);
+	ContactDestroy(&con);
 }
 
 int main()
