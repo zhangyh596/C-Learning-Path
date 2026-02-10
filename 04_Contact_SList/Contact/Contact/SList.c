@@ -2,17 +2,17 @@
 
 #include "SList.h"
 
-//单链表打印
-void SLTPrint(SLTNode* phead)
-{
-	SLTNode* pcur = phead;
-	while (pcur != NULL)
-	{
-		printf("%d->", pcur->data);
-		pcur = pcur->next;
-	}
-	printf("NULL\n");
-}
+////单链表打印
+//void SLTPrint(SLTNode* phead)
+//{
+//	SLTNode* pcur = phead;
+//	while (pcur != NULL)
+//	{
+//		printf("%d->", pcur->data);
+//		pcur = pcur->next;
+//	}
+//	printf("NULL\n");
+//}
 
 //创建新节点（辅助函数）
 static SLTNode* BuySLTNode(SLTDataType x)
@@ -90,20 +90,20 @@ void SLTPopFront(SLTNode** pphead)
 	*pphead = next;
 }
 
-//单链表查找
-SLTNode* SLTFind(SLTNode* phead, SLTDataType x)
-{
-	SLTNode* pcur = phead;
-	while (pcur)
-	{
-		if (pcur->data == x)
-		{
-			return pcur;
-		}
-		pcur = pcur->next;
-	}
-	return NULL;
-}
+////单链表查找
+//SLTNode* SLTFind(SLTNode* phead, SLTDataType x)
+//{
+//	SLTNode* pcur = phead;
+//	while (pcur)
+//	{
+//		if (pcur->data == x)
+//		{
+//			return pcur;
+//		}
+//		pcur = pcur->next;
+//	}
+//	return NULL;
+//}
 
 //单链表在指定位置之前插入
 void SLTInsert(SLTNode** pphead, SLTNode* pos, SLTDataType x)
