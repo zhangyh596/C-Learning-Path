@@ -33,9 +33,53 @@ void testContact02()
 	ContactDestroy(&con);
 }
 
+void menu()
+{
+	printf("***********************\n");
+	printf("*****1.add   2.del*****\n");
+	printf("*****3.find  4.modify**\n");
+	printf("*****5.shoe  6.exit****\n");
+	printf("***********************\n");
+}
+
 int main()
 {
 	//testSList01();
-	testContact02();
+	//testContact02();
+	Contact* con = NULL;
+	ContactInit(&con);
+
+	int input = 0;
+	do
+	{
+		menu();
+		printf("请选择要进行的操作：");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 1:
+			ContactAdd(&con);
+			break;
+		case 2:
+			ContactDel(&con);
+			break;
+		case 3:
+			ContactFind(con);
+			break;
+		case 4:
+			ContactModify(con);
+			break;
+		case 5:
+			ContactShow(con);
+			break;
+		case 0:
+			ContactDestroy(&con);
+			printf("退出通讯录！\n");
+			break;
+		default:
+			printf("输入错误，请重新选择\n");
+			break;
+		}
+	} while (input);
 	return 0;
 }
