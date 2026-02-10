@@ -25,3 +25,5 @@ void ContactAdd(Contact** ppcon);
 void ContactDel(Contact** ppcon);
 //修改联系人
 void ContactModify(Contact** ppcon);
+//查找联系人
+void ContactFind(Contact* pcon);

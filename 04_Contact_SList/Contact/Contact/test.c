@@ -28,6 +28,7 @@ void testContact02()
 	ContactAdd(&con);
 	//ContactDel(&con);
 	ContactModify(con);
+	ContactFind(con);
 }
 
 int main()

@@ -87,3 +87,20 @@ void ContactModify(Contact* pcon)
 	scanf("%s", pos->data.addr);
 	printf("修改成功！\n");
 }
+
+//查找联系人
+void ContactFind(Contact* pcon)
+{
+	char name[NAME_MAX];
+	printf("请输入要查找的联系人的姓名：");
+	scanf("%s", name);
+	Contact* pos = FindByName(pcon, name);
+	if (pos == NULL)
+	{
+		printf("要查找的联系人不存在！\n");
+		return;
+	}
+	printf("姓名：%s 性别：%s 年龄：%d 电话：%s 地址：%s\n",
+		pos->data.name, pos->data.gender, pos->data.age, pos->data.tel, pos->data.addr);
+}
+
