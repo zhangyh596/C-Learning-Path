@@ -24,6 +24,7 @@ DListNode* DListInit()
 	DListNode* phead = BuyDListNode(-1);
 	phead->next = phead;//一定要指向自身
 	phead->prev = phead;
+	return phead;
 }
 
 //打印
@@ -39,3 +40,16 @@ void DListPrint(DListNode* phead)
 	}
 	printf("哨兵\n");
 }
+
+//尾插
+void DListPushBack(DListNode* phead, DLTDataType x)
+{
+	assert(phead);
+	DListNode* newnode = BuyDListNode(x);
+	DListNode* ptail = phead->prev;
+	newnode->next = phead;
+	newnode->prev = ptail;
+	ptail->next = newnode;
+	phead->prev = newnode;
+}
+

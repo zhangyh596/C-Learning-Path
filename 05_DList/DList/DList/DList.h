@@ -17,3 +17,5 @@ typedef struct DListNode
 DListNode* DListInit();
 //打印
 void DListPrint(DListNode* phead);
+//尾插
+void DListPushBack(DListNode* phead, DLTDataType x);
