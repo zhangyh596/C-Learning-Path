@@ -19,3 +19,5 @@ DListNode* DListInit();
 void DListPrint(DListNode* phead);
 //尾插
 void DListPushBack(DListNode* phead, DLTDataType x);
+//头插
+void DListPushFront(DListNode* phead, DLTDataType x);

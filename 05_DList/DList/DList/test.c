@@ -9,7 +9,10 @@ void testDList01()
 	DListPushBack(plist, 2);
 	DListPushBack(plist, 3);
 	DListPrint(plist);
+	DListPushFront(plist, 4);
+	DListPrint(plist);
 }
+
 int main()
 {
 	testDList01();

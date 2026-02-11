@@ -47,9 +47,23 @@ void DListPushBack(DListNode* phead, DLTDataType x)
 	assert(phead);
 	DListNode* newnode = BuyDListNode(x);
 	DListNode* ptail = phead->prev;
+
 	newnode->next = phead;
 	newnode->prev = ptail;
 	ptail->next = newnode;
 	phead->prev = newnode;
+}
+
+//头插
+void DListPushFront(DListNode* phead, DLTDataType x)
+{
+	assert(phead);
+	DListNode* newnode = BuyDListNode(x);
+	DListNode* first = phead->next;
+
+	newnode->next = first;
+	newnode->prev = phead;
+	phead->next = newnode;
+	first->prev = newnode;
 }
 
