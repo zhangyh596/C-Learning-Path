@@ -14,12 +14,28 @@ DListNode* BuyDListNode(DLTDataType x)
 	newnode->data = x;
 	newnode->next = NULL;
 	newnode->prev = NULL;
+
+	return newnode;
 }
 
 //初始化
 DListNode* DListInit()
 {
 	DListNode* phead = BuyDListNode(-1);
-	phead->next = phead;
+	phead->next = phead;//一定要指向自身
 	phead->prev = phead;
+}
+
+//打印
+void DListPrint(DListNode* phead)
+{
+	assert(phead);
+	printf("哨兵<==>");
+	DListNode* pcur = phead->next;
+	while (pcur != phead)
+	{
+		printf("%d<==>", pcur->data);
+		pcur = pcur->next;
+	}
+	printf("哨兵\n");
 }
