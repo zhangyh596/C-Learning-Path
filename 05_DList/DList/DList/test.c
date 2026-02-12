@@ -19,7 +19,10 @@ void testDList01()
 	DListInsert(find, 4);
 	DListPrint(plist);
 	DListErase(find);
+	find = NULL;
 	DListPrint(plist);
+	DListDestroy(plist);
+	plist = NULL;
 	/*if (find == NULL)
 	{
 		printf("没找到！\n");

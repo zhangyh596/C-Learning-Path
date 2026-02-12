@@ -34,3 +34,5 @@ DListNode* DListFind(DListNode* phead, DLTDataType x);
 void DListInsert(DListNode* pos, DLTDataType x);
 //删除任意位置的节点
 void DListErase(DListNode* pos);
+//销毁
+void DListDestroy(DListNode* phead);

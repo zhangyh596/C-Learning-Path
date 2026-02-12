@@ -142,3 +142,16 @@ void DListErase(DListNode* pos)
 	free(pos);//pos只是值传递，需要手动置空
 }
 
+//销毁
+void DListDestroy(DListNode* phead)
+{
+	assert(phead);
+	DListNode* pcur = phead->next;
+	while (pcur != phead)
+	{
+		DListNode* next = pcur->next;
+		free(pcur);
+		pcur = next;
+	}
+	free(phead);//这里外部的phead也需要手动置空
+}
