@@ -116,3 +116,29 @@ DListNode* DListFind(DListNode* phead, DLTDataType x)
 	}
 	return NULL;
 }
+
+//在任意位置之前插入
+void DListInsert(DListNode* pos, DLTDataType x)
+{
+	assert(pos);
+	DListNode* prev = pos->prev;
+	DListNode* newnode = BuyDListNode(x);
+
+	newnode->next = pos;
+	newnode->prev = prev;
+	prev->next = newnode;
+	pos->prev = newnode;
+}
+
+//删除任意位置的节点
+void DListErase(DListNode* pos)
+{
+	assert(pos);
+	DListNode* prev = pos->prev;
+	DListNode* next = pos->next;
+
+	prev->next = next;
+	next->prev = prev;
+	free(pos);//pos只是值传递，需要手动置空
+}
+

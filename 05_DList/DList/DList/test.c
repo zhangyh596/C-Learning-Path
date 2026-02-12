@@ -15,8 +15,12 @@ void testDList01()
 	DListPrint(plist);
 	DListPopFront(plist);
 	DListPrint(plist);
-	/*int find = DListFind(plist, 1);
-	if (find == NULL)
+	DListNode* find = DListFind(plist, 1);
+	DListInsert(find, 4);
+	DListPrint(plist);
+	DListErase(find);
+	DListPrint(plist);
+	/*if (find == NULL)
 	{
 		printf("没找到！\n");
 	}

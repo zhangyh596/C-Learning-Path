@@ -30,3 +30,7 @@ void DListPopBack(DListNode* phead);
 void DListPopFront(DListNode* phead);
 //查找
 DListNode* DListFind(DListNode* phead, DLTDataType x);
+//在任意位置之前插入
+void DListInsert(DListNode* pos, DLTDataType x);
+//删除任意位置的节点
+void DListErase(DListNode* pos);
