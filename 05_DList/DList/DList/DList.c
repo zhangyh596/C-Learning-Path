@@ -100,3 +100,19 @@ void DListPopFront(DListNode* phead)
 	first = NULL;
 }
 
+//查找
+DListNode* DListFind(DListNode* phead, DLTDataType x)
+{
+	assert(phead);
+	DListNode* pcur = phead->next;
+
+	while (pcur != phead)
+	{
+		if (pcur->data == x)
+		{
+			return pcur;
+		}
+		pcur = pcur->next;
+	}
+	return NULL;
+}

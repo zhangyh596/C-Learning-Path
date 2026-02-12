@@ -28,3 +28,5 @@ bool DListEmpty(DListNode* phead);
 void DListPopBack(DListNode* phead);
 //头删
 void DListPopFront(DListNode* phead);
+//查找
+DListNode* DListFind(DListNode* phead, DLTDataType x);
