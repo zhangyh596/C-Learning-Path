@@ -24,3 +24,7 @@ void DListPushBack(DListNode* phead, DLTDataType x);
 void DListPushFront(DListNode* phead, DLTDataType x);
 //判空（辅助）
 bool DListEmpty(DListNode* phead);
+//尾删
+void DListPopBack(DListNode* phead);
+//头删
+void DListPopFront(DListNode* phead);

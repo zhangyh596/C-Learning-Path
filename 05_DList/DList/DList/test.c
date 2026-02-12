@@ -11,6 +11,8 @@ void testDList01()
 	DListPrint(plist);
 	DListPushFront(plist, 4);
 	DListPrint(plist);
+	DListPopBack(plist);
+	DListPrint(plist);
 	/*bool ret = DListEmpty(plist);
 	if (ret == false)
 	{

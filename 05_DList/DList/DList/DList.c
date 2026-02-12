@@ -74,3 +74,18 @@ bool DListEmpty(DListNode* phead)
 	return phead->next == phead;
 }
 
+//尾删
+void DListPopBack(DListNode* phead)
+{
+	assert(phead && !DListEmpty(phead));
+	DListNode* ptail = phead->prev;
+	DListNode* ptailPrev = ptail->prev;
+
+	phead->prev = ptailPrev;
+	ptailPrev->next = phead;
+	free(ptail);
+	ptail = NULL;
+}
+
+//头删
+void DListPopFront(DListNode* phead);
