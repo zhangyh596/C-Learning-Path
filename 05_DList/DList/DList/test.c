@@ -11,6 +11,12 @@ void testDList01()
 	DListPrint(plist);
 	DListPushFront(plist, 4);
 	DListPrint(plist);
+	/*bool ret = DListEmpty(plist);
+	if (ret == false)
+	{
+		printf("链表不为空！\n");
+	}*/
+
 }
 
 int main()

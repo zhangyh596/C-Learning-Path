@@ -67,3 +67,10 @@ void DListPushFront(DListNode* phead, DLTDataType x)
 	first->prev = newnode;
 }
 
+//判空（辅助）
+bool DListEmpty(DListNode* phead)
+{
+	assert(phead);
+	return phead->next == phead;
+}
+

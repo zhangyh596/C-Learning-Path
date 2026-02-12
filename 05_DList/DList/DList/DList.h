@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <stdbool.h>
 
 typedef int DLTDataType;
 
@@ -21,3 +22,5 @@ void DListPrint(DListNode* phead);
 void DListPushBack(DListNode* phead, DLTDataType x);
 //头插
 void DListPushFront(DListNode* phead, DLTDataType x);
+//判空（辅助）
+bool DListEmpty(DListNode* phead);
