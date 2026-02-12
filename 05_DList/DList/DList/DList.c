@@ -88,4 +88,15 @@ void DListPopBack(DListNode* phead)
 }
 
 //头删
-void DListPopFront(DListNode* phead);
+void DListPopFront(DListNode* phead)
+{
+	assert(phead && !DListEmpty(phead));
+	DListNode* first = phead->next;
+	DListNode* second = first->next;
+
+	phead->next = second;
+	second->prev = phead;
+	free(first);
+	first = NULL;
+}
+

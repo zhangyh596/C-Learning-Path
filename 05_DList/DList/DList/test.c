@@ -13,6 +13,8 @@ void testDList01()
 	DListPrint(plist);
 	DListPopBack(plist);
 	DListPrint(plist);
+	DListPopFront(plist);
+	DListPrint(plist);
 	/*bool ret = DListEmpty(plist);
 	if (ret == false)
 	{
