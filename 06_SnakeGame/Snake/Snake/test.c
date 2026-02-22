@@ -25,7 +25,7 @@ void test()
 int main()
 {
 	//设置适配本地环境
-	set_locale(LC_ALL, "");
+	setlocale(LC_ALL, "");
 
 	test();
 	return 0;
