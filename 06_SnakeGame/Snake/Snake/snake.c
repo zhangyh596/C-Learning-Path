@@ -2,7 +2,7 @@
 
 #include "snake.h"
 
-void SetPos(short x, short y)
+static void SetPos(short x, short y)
 {
 	//获取标准输出设备的句柄
 	HANDLE houtput = NULL;
@@ -12,11 +12,23 @@ void SetPos(short x, short y)
 	COORD pos = { x, y };
 	SetConsoleCursorPosition(houtput, pos);
 }
-void WelcomeToGame()
+
+static void WelcomeToGame()
 {
 	SetPos(40, 14);
 	wprintf(L"欢迎来到贪吃蛇小游戏\n");
+	SetPos(42, 20);
+	system("pause");
+	system("cls");
+	SetPos(25, 14);
+	wprintf(L"用↑、↓、←、→来控制蛇的移动，按F3加速，F4减速\n");
+	SetPos(25, 15);
+	wprintf(L"加速能够得到更高的分数\n");
+	SetPos(42, 20);
+	system("pause");
+	system("cls");
 }
+
 void GameStart(pSnake ps)
 {
 	//0.先设置窗口的大小名字，再光标隐藏
@@ -34,9 +46,8 @@ void GameStart(pSnake ps)
 	// 5. 按下遥控器的“保存”键，把修改后的设置重新应用给控制台
 	SetConsoleCursorInfo(houtput, &CursorInfo);
 
-	//1.打印环境界面
+	//1.打印环境界面 2.功能介绍
 	WelcomeToGame();
-	//2.功能介绍
 	//3.绘制地图
 	//4.创建蛇
 	//5.创建食物
