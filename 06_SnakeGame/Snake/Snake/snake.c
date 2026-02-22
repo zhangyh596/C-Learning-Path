@@ -2,6 +2,21 @@
 
 #include "snake.h"
 
+void SetPos(short x, short y)
+{
+	//获取标准输出设备的句柄
+	HANDLE houtput = NULL;
+	houtput = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	//定位光标的位置
+	COORD pos = { x, y };
+	SetConsoleCursorPosition(houtput, pos);
+}
+void WelcomeToGame()
+{
+	SetPos(40, 14);
+	wprintf(L"欢迎来到贪吃蛇小游戏\n");
+}
 void GameStart(pSnake ps)
 {
 	//0.先设置窗口的大小名字，再光标隐藏
@@ -20,7 +35,7 @@ void GameStart(pSnake ps)
 	SetConsoleCursorInfo(houtput, &CursorInfo);
 
 	//1.打印环境界面
-	
+	WelcomeToGame();
 	//2.功能介绍
 	//3.绘制地图
 	//4.创建蛇
