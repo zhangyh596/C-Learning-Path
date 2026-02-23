@@ -120,6 +120,7 @@ again:
 	if (pFood == NULL)
 	{
 		perror("CreateFood failed");
+		return;
 	}
 	pFood->x = x;
 	pFood->y = y;
@@ -171,7 +172,7 @@ static void PrintHelpInfo()
 
 #define KEY_PRESS(vk) ((GetAsyncKeyState(vk)&1)?1:0)
 
-void Pause()
+static void Pause()
 {
 	while (1)
 	{
@@ -182,6 +183,76 @@ void Pause()
 		}
 	}
 }
+
+int NextIsFood(pSnakeNode pn, pSnake ps)
+{
+	return (ps->_pFood->x == pn->x && ps->_pFood->y == pn->y);
+}
+
+void EatFood(pSnakeNode pn, pSnake ps)
+{
+	//头插法
+	ps->_pFood->next = ps->_pSnake;
+	ps->_pSnake = ps->_pFood;
+
+	//释放下一个位置的节点
+	free(pn);
+	pn = NULL;
+
+	//打印蛇
+	pSnakeNode cur = ps->_pSnake;
+	while (cur)
+	{
+		SetPos(cur->x, cur->y);
+		wprintf(L"%lc", BODY);
+		cur = cur->next;
+	}
+	ps->_score += ps->_food_weight;
+
+	//重新创建食物
+	CreateFood(ps);
+}
+
+void SnakeMove(pSnake ps)
+{
+	//创建一个节点，表示蛇即将到达的下一个节点
+	pSnakeNode pNextNode = (pSnakeNode)malloc(sizeof(SnakeNode));
+	if (pNextNode == NULL)
+	{
+		perror("SnkaeMove failed");
+		return;
+	}
+
+	switch (ps->_dir)
+	{
+	case UP:
+		pNextNode->x = ps->_pSnake->x;
+		pNextNode->y = ps->_pSnake->y - 1;
+		break;
+	case DOWN:
+		pNextNode->x = ps->_pSnake->x;
+		pNextNode->y = ps->_pSnake->y + 1;
+		break;
+	case LEFT:
+		pNextNode->x = ps->_pSnake->x - 2;
+		pNextNode->y = ps->_pSnake->y;
+		break;
+	case RIGHT:
+		pNextNode->x = ps->_pSnake->x + 2;
+		pNextNode->y = ps->_pSnake->y;
+		break;
+	}
+
+	if (NextIsFood(pNextNode, ps))
+	{
+		EatFood(pNextNode, ps);
+	}
+	else
+	{
+
+	}
+}
+
 void GameRun(pSnake ps)
 {
 	//打印帮助信息
@@ -237,5 +308,9 @@ void GameRun(pSnake ps)
 				ps->_food_weight -= 2;
 			}
 		}
+
+		SnakeMove(ps);//蛇走一步的过程
+		Sleep(ps->_sleep_time);
+
 	} while (ps->_status == OK);
 }
