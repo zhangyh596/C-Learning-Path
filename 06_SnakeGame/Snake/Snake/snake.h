@@ -5,6 +5,12 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+#define POS_X 24
+#define POS_Y 5
+
+#define WALL L'□'
+#define BODY L'●'
+
 //类型的声明
 
 //蛇的方向
@@ -54,3 +60,9 @@ typedef Snake* pSnake;
 
 //游戏的初始化
 void GameStart(pSnake);
+//欢迎界面的打印
+void WelcomeToGame();
+//创建地图
+void CreateMap();
+//初始化蛇身
+void InitSnake(pSnake ps);
