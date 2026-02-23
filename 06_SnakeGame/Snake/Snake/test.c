@@ -8,6 +8,7 @@ void test()
 {
 	//创建贪吃蛇
 	Snake snake = { 0 };
+
 	//初始化游戏
 	//1.打印环境界面
 	//2.功能介绍
@@ -18,7 +19,8 @@ void test()
 	GameStart(&snake);
 
 	//运行游戏
-	
+	GameRun(&snake);
+
 	//结束游戏（善后工作）
 }
 
@@ -26,6 +28,7 @@ int main()
 {
 	//设置适配本地环境
 	setlocale(LC_ALL, "");
+	srand((unsigned int)time(NULL));
 
 	test();
 	return 0;

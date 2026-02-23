@@ -4,12 +4,14 @@
 #include <windows.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define POS_X 24
 #define POS_Y 5
 
 #define WALL L'□'
 #define BODY L'●'
+#define FOOD L'★'
 
 //类型的声明
 
@@ -47,7 +49,7 @@ typedef SnakeNode* pSnakeNode;
 typedef struct Snake
 {
 	pSnakeNode _pSnake;//指向蛇头的指针
-	pSnakeNode _pfood;//指向食物节点的指针
+	pSnakeNode _pFood;//指向食物节点的指针
 	enum DIRECTION _dir;//蛇的方向
 	enum GAME_STATUS _status;//游戏的状态
 	int _food_weight;//一个食物的分数
@@ -66,3 +68,7 @@ void WelcomeToGame();
 void CreateMap();
 //初始化蛇身
 void InitSnake(pSnake ps);
+//创建食物
+void CreateFood(pSnake ps);
+//游戏运行的逻辑
+void GameRun(pSnake ps);

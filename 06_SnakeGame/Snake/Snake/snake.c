@@ -105,7 +105,6 @@ again:
 	} while (x % 2 != 0);
 
 	//x和y的坐标不能和蛇身坐标冲突
-
 	pSnakeNode cur = ps->_pSnake;
 	while (cur)
 	{
@@ -148,13 +147,33 @@ void GameStart(pSnake ps)
 	// 按下遥控器的“保存”键，把修改后的设置重新应用给控制台
 	SetConsoleCursorInfo(houtput, &CursorInfo);
 
-	//1.打印环境界面 2.功能介绍
+	//1.打印环境界面和功能介绍
 	WelcomeToGame();
-	//3.绘制地图
+	//2.绘制地图
 	CreateMap();
-	//4.创建蛇
+	//3.创建蛇
 	InitSnake(ps);
-	//5.创建食物
+	//4.创建食物
 	CreateFood(ps);
-	//6.设置游戏的相关信息
+}
+
+static void PrintHelpInfo()
+{
+	SetPos(64, 14);
+	wprintf(L"%ls", L"不能穿墙，不能咬到自己");
+	SetPos(64, 15);
+	wprintf(L"%ls", L"用↑、↓、←、→来控制蛇的移动\n");
+	SetPos(64, 16);
+	wprintf(L"%ls", L"按F3加速，F4减速\n");
+	SetPos(64, 17);
+	wprintf(L"%ls", L"按esc退出游戏，按空格键暂停游戏\n");
+}
+void GameRun(pSnake ps)
+{
+	//打印帮助信息
+	PrintHelpInfo();
+	do
+	{
+
+	} while (ps->_status == OK);
 }
