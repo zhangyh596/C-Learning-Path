@@ -169,7 +169,7 @@ static void PrintHelpInfo()
 	wprintf(L"%ls", L"按esc退出游戏，按空格键暂停游戏\n");
 }
 
-#define KEY_PRESS(vk) ((GetAsynKeyState(vk)&1)?1:0)
+#define KEY_PRESS(vk) ((GetAsyncKeyState(vk)&1)?1:0)
 
 void Pause()
 {
@@ -222,10 +222,20 @@ void GameRun(pSnake ps)
 		else if (KEY_PRESS(VK_F3))
 		{
 			//加速
+			if (ps->_sleep_time > 80)
+			{
+				ps->_sleep_time -= 30;
+				ps->_food_weight += 2;
+			}
 		}
 		else if (KEY_PRESS(VK_F4))
 		{
 			//减速
+			if (ps->_food_weight > 2)
+			{
+				ps->_sleep_time += 30;
+				ps->_food_weight -= 2;
+			}
 		}
 	} while (ps->_status == OK);
 }
