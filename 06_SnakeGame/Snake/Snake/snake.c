@@ -64,7 +64,7 @@ void InitSnake(pSnake ps)
 		cur = (pSnakeNode)malloc(sizeof(SnakeNode));
 		if (cur == NULL)
 		{
-			perror("malloc failed");
+			perror("InitSnake failed");
 			return;
 		}
 		cur->next = NULL;
@@ -92,6 +92,45 @@ void InitSnake(pSnake ps)
 	ps->_status = OK;
 }
 
+void CreateFood(pSnake ps)
+{
+	int x = 0, y = 0;
+
+	//生成x是2的倍数
+again:
+	do
+	{
+		x = rand() % 53 + 2;//x:2~54
+		y = rand() % 25 + 1;//y:1~25
+	} while (x % 2 != 0);
+
+	//x和y的坐标不能和蛇身坐标冲突
+
+	pSnakeNode cur = ps->_pSnake;
+	while (cur)
+	{
+		if (x == cur->x && y == cur->y)
+		{
+			goto again;
+		}
+		cur = cur->next;
+	}
+
+	//创建食物的节点
+	pSnakeNode pFood = (pSnakeNode)malloc(sizeof(SnakeNode));
+	if (pFood == NULL)
+	{
+		perror("CreateFood failed");
+	}
+	pFood->x = x;
+	pFood->y = y;
+	pFood->next = NULL;
+
+	SetPos(x, y);
+	wprintf(L"%lc", FOOD);
+	ps->_pFood = pFood;
+}
+
 void GameStart(pSnake ps)
 {
 	//0.先设置窗口的大小名字，再光标隐藏
@@ -116,5 +155,6 @@ void GameStart(pSnake ps)
 	//4.创建蛇
 	InitSnake(ps);
 	//5.创建食物
+	CreateFood(ps);
 	//6.设置游戏的相关信息
 }
