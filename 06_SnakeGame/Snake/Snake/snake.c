@@ -168,12 +168,64 @@ static void PrintHelpInfo()
 	SetPos(64, 17);
 	wprintf(L"%ls", L"按esc退出游戏，按空格键暂停游戏\n");
 }
+
+#define KEY_PRESS(vk) ((GetAsynKeyState(vk)&1)?1:0)
+
+void Pause()
+{
+	while (1)
+	{
+		Sleep(200);
+		if (KEY_PRESS(VK_SPACE))
+		{
+			break;
+		}
+	}
+}
 void GameRun(pSnake ps)
 {
 	//打印帮助信息
 	PrintHelpInfo();
 	do
 	{
+		//打印总分数和食物的分值
+		SetPos(64, 10);
+		printf("总分数：%d\n", ps->_score);
+		SetPos(64, 11);
+		printf("当前食物的分数：%d\n", ps->_food_weight);
 
+		if (KEY_PRESS(VK_UP) && ps->_dir != DOWN)
+		{
+			ps->_dir = UP;
+		}
+		else if (KEY_PRESS(VK_DOWN) && ps->_dir != UP)
+		{
+			ps->_dir = DOWN;
+		}
+		else if (KEY_PRESS(VK_LEFT) && ps->_dir != RIGHT)
+		{
+			ps->_dir = LEFT;
+		}
+		else if (KEY_PRESS(VK_RIGHT) && ps->_dir != LEFT)
+		{
+			ps->_dir = RIGHT;
+		}
+		else if (KEY_PRESS(VK_SPACE))
+		{
+			Pause();
+		}
+		else if (KEY_PRESS(VK_ESCAPE))
+		{
+			//正常退出
+			ps->_status = END_NORMAL;
+		}
+		else if (KEY_PRESS(VK_F3))
+		{
+			//加速
+		}
+		else if (KEY_PRESS(VK_F4))
+		{
+			//减速
+		}
 	} while (ps->_status == OK);
 }
