@@ -60,6 +60,8 @@ typedef Snake* pSnake;
 
 //函数的声明
 
+//定位光标位置
+void SetPos(short x, short y);
 //游戏的初始化
 void GameStart(pSnake);
 //欢迎界面的打印
@@ -80,3 +82,9 @@ int NextIsFood(pSnakeNode pn, pSnake ps);
 void EatFood(pSnakeNode pn, pSnake ps);
 //下一个位置不是食物
 void NoFood(pSnakeNode pn, pSnake ps);
+//检测蛇是否撞墙
+void KillByWall(pSnake ps);
+//检测蛇是否撞到自己
+void KillBySelf(pSnake ps);
+//游戏善后工作
+void GameEnd(pSnake ps);
