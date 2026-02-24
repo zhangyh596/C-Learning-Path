@@ -2,7 +2,7 @@
 
 #include "snake.h"
 
-static void SetPos(short x, short y)
+void SetPos(short x, short y)
 {
 	//获取标准输出设备的句柄
 	HANDLE houtput = NULL;
@@ -317,7 +317,7 @@ void GameRun(pSnake ps)
 		SetPos(64, 10);
 		printf("总分数：%d\n", ps->_score);
 		SetPos(64, 11);
-		printf("当前食物的分数：%d\n", ps->_food_weight);
+		printf("当前食物的分数：%2d\n", ps->_food_weight);
 
 		if (KEY_PRESS(VK_UP) && ps->_dir != DOWN)
 		{
@@ -367,4 +367,30 @@ void GameRun(pSnake ps)
 		Sleep(ps->_sleep_time);
 
 	} while (ps->_status == OK);
+}
+
+void GameEnd(pSnake ps)
+{
+	SetPos(24, 12);
+	switch (ps->_status)
+	{
+	case END_NORMAL:
+		printf("您主动结束游戏\n");
+		break;
+	case KILL_BY_WALL:
+		printf("您撞到了墙，游戏结束\n");
+		break;
+	case KILL_BY_SELF:
+		printf("您撞到了自己，游戏结束\n");
+		break;
+	}
+
+	//释放蛇身的链表
+	pSnakeNode cur = ps->_pSnake;
+	while (cur)
+	{
+		pSnakeNode del = cur;
+		cur = cur->next;
+		free(del);
+	}
 }
