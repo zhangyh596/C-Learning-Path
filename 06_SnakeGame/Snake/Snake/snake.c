@@ -393,4 +393,8 @@ void GameEnd(pSnake ps)
 		cur = cur->next;
 		free(del);
 	}
+
+	//释放掉食物节点
+	free(ps->_pFood);
+	ps->_pFood = NULL;
 }
