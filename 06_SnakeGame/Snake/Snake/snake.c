@@ -215,7 +215,51 @@ void EatFood(pSnakeNode pn, pSnake ps)
 
 void NoFood(pSnakeNode pn, pSnake ps)
 {
+	//头插法
+	pn->next = ps->_pSnake;
+	ps->_pSnake = pn;
 
+	//打印新蛇头
+	SetPos(pn->x, pn->y);
+	wprintf(L"%lc", BODY);
+
+	//找尾节点的前一个节点
+	pSnakeNode cur = ps->_pSnake;
+	while (cur->next->next != NULL)
+	{
+		cur = cur->next;
+	}
+
+	//把最后一个节点打印成空格
+	SetPos(cur->next->x, cur->next->y);
+	printf("  ");
+
+	//释放掉尾节点
+	free(cur->next);
+	cur->next = NULL;
+}
+
+void KillByWall(pSnake ps)
+{
+	if (ps->_pSnake->x == 0 || ps->_pSnake->x == 56 ||
+		ps->_pSnake->y == 0 || ps->_pSnake->y == 26)
+	{
+		ps->_status = KILL_BY_WALL;
+	}
+}
+
+void KillBySelf(pSnake ps)
+{
+	pSnakeNode cur = ps->_pSnake->next;
+	while (cur)
+	{
+		if (cur->x == ps->_pSnake->x && cur->y == ps->_pSnake->y)
+		{
+			ps->_status = KILL_BY_SELF;
+			break;
+		}
+		cur = cur->next;
+	}
 }
 
 void SnakeMove(pSnake ps)
@@ -254,8 +298,13 @@ void SnakeMove(pSnake ps)
 	}
 	else
 	{
-
+		NoFood(pNextNode, ps);
 	}
+
+	//检测蛇是否撞墙
+	KillByWall(ps);
+	//检测蛇是否撞到自己
+	KillBySelf(ps);
 }
 
 void GameRun(pSnake ps)
