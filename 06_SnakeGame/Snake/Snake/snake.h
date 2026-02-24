@@ -72,3 +72,11 @@ void InitSnake(pSnake ps);
 void CreateFood(pSnake ps);
 //游戏运行的逻辑
 void GameRun(pSnake ps);
+//蛇的移动
+void SnakeMove(pSnake ps);
+//判断下一个坐标是否是食物
+int NextIsFood(pSnakeNode pn, pSnake ps);
+//下一个位置是食物就吃掉
+void EatFood(pSnakeNode pn, pSnake ps);
+//下一个位置不是食物
+void NoFood(pSnakeNode pn, pSnake ps);

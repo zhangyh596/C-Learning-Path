@@ -213,6 +213,11 @@ void EatFood(pSnakeNode pn, pSnake ps)
 	CreateFood(ps);
 }
 
+void NoFood(pSnakeNode pn, pSnake ps)
+{
+
+}
+
 void SnakeMove(pSnake ps)
 {
 	//创建一个节点，表示蛇即将到达的下一个节点
