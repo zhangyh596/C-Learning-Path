@@ -36,6 +36,7 @@ void test()
 			; // 什么都不做，纯粹为了消耗掉多余的字符
 		}
 	} while (ch == 'Y' || ch == 'y');
+	SetPos(0, 27);
 }
 
 int main()
