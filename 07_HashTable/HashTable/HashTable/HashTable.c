@@ -17,3 +17,22 @@ unsigned int hash(const char* key, int table_size)
 	//挤进柜子里面
 	return value % table_size;
 }
+
+HashTable* create_table(int size)
+{
+	//打造柜子的外框
+	HashTable* ht = (HashTable*)malloc(sizeof(HashTable));
+	ht->size = size;
+
+	//打造柜子里的一排抽屉（钩子）
+	ht->entries = (Node**)malloc(sizeof(Node*) * size);
+
+	//把所有钩子置空
+	for (int i = 0; i < size; i++)
+	{
+		ht->entries[i] = NULL;
+	}
+
+	//结束
+	return ht;
+}
