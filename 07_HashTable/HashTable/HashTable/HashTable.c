@@ -83,3 +83,24 @@ void insert(HashTable* ht, const char* key, int value)
 	new_node->next = ht->entries[slot];
 	ht->entries[slot] = new_node;
 }
+
+int search(HashTable* ht, const char* key, int* out_value)
+{
+	//问前台要去几号柜子找
+	unsigned int slot = hash(key, ht->size);
+
+	//走到抽屉前，抓住最上面的第一个袋子
+	Node* entry = ht->entries[slot];
+
+	//开始顺着钩子往下找
+	while (entry)
+	{
+		if (strcmp(entry->key, key) == 0)
+		{
+			*out_value = entry->value;
+			return 1;//1代表找到了
+		}
+		entry = entry->next;
+	}
+	return 0;//0代表没找到
+}
