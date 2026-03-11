@@ -104,3 +104,38 @@ int search(HashTable* ht, const char* key, int* out_value)
 	}
 	return 0;//0代表没找到
 }
+
+void delete_key(HashTable* ht, const char* key)
+{
+	unsigned int slot = hash(key, ht->size);
+	Node* entry = ht->entries[slot];//当前正在看的袋子
+	Node* prev = NULL;//上一个看过的袋子（关键）
+
+	while (entry)
+	{
+		if (strcmp(entry->key, key) == 0)
+		{
+			//分类讨论删除情况
+			if (prev == NULL)
+			{
+				// 情况一：它是抽屉上的第一个袋子！
+			    // 直接把抽屉的主挂钩，挂到它的下一个袋子上。
+				ht->entries[slot] = entry->next;
+			}
+			else
+			{
+				// 情况二：它挂在半中间！
+				// 让上一个袋子的钩子，越过它，直接勾住它的下一个袋子。
+				prev->next = entry->next;
+			}
+			//顺序不能反
+			free(entry->key);
+			free(entry);
+			return;
+		}
+
+		//没找到的话继续往下找
+		prev = entry;
+		entry = entry->next;
+	}
+}
