@@ -21,6 +21,53 @@ Node* create_node(const char* key, int value)
 	return new_node;
 }
 
+void resize(HashTable* ht)
+{
+	int old_size = ht->size;
+	int new_size = old_size * 2;
+
+	//打造一排全新的抽屉
+	Node** new_entries = (Node**)malloc(sizeof(Node*) * new_size);
+	for (int i = 0; i < new_size; i++)
+	{
+		new_entries[i] = NULL;//先对每个新抽屉置空
+	}
+
+	Node** old_entries = ht->entries;//拿到旧抽屉
+
+	//搬家：挨个翻旧抽屉
+	for (int i = 0; i < old_size; i++)
+	{
+		Node* entry = old_entries[i];//抓住旧抽屉上的袋子
+
+		while (entry)
+		{
+			// 极其致命的拆迁铁律又来了：拔下来之前，先看下一个袋子是谁！
+			Node* next_entry = entry->next;
+
+			// 重新算号 (Rehash)：
+			// 以前是除以 10 取余数，现在是除以 20 取余数。
+			// 比如算出来原本是 23，以前在 3 号抽屉，现在应该去 3 号抽屉；
+			// 如果原本是 33，以前在 3 号抽屉，现在就要去 13 号抽屉了！
+			unsigned int new_slot = hash(entry->key, new_size);
+
+			//头插法插入
+			entry->next = new_entries[new_slot];
+			new_entries[new_slot] = entry;
+
+			entry = entry->next;
+		}
+	}
+
+	//销毁旧抽屉
+	free(old_entries);
+
+	// 更新系统：让大柜子换上新的核心
+	ht->entries = new_entries;
+	ht->size = new_size;
+	// ht->count 不变！因为袋子的总数还是那么多，只是住得更宽敞了。
+}
+
 unsigned int hash(const char* key, int table_size)
 {
 	unsigned long int value = 5381;//魔法初始数字
@@ -43,6 +90,9 @@ HashTable* create_table(int size)
 	HashTable* ht = (HashTable*)malloc(sizeof(HashTable));
 	ht->size = size;
 
+	//当前还没挂入袋子
+	ht->count = 0;
+
 	//打造柜子里的一排抽屉（钩子）
 	ht->entries = (Node**)malloc(sizeof(Node*) * size);
 
@@ -58,6 +108,13 @@ HashTable* create_table(int size)
 
 void insert(HashTable* ht, const char* key, int value)
 {
+	// 警报器：如果袋子数量达到了抽屉数量的 75%
+	// 比如 10 个抽屉挂了 7 个以上的袋子，说明快挤爆了！
+	if (ht->count >= ht->size * 0.75) {
+		// 瞬间触发大搬家！在后台偷偷扩容成 20 个抽屉
+		resize(ht);
+	}
+
 	//询问前台去几号抽屉
 	unsigned int slot = hash(key, ht->size);
 
@@ -82,6 +139,9 @@ void insert(HashTable* ht, const char* key, int value)
 	//采用头插法，尾插还得遍历到尾节点和分类讨论
 	new_node->next = ht->entries[slot];
 	ht->entries[slot] = new_node;
+
+	//袋子数量+1
+	ht->count++;
 }
 
 int search(HashTable* ht, const char* key, int* out_value)
