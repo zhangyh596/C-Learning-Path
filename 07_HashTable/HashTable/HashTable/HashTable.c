@@ -139,3 +139,28 @@ void delete_key(HashTable* ht, const char* key)
 		entry = entry->next;
 	}
 }
+
+void free_table(HashTable* ht)
+{
+	//挨个拉开所有抽屉
+	for (int i = 0; i < ht->size; i++)
+	{
+		Node* entry = ht->entries[i];//抓住当前抽屉上的第一个袋子
+
+		while (entry)
+		{
+			//先记录entry的下一个袋子，防止找不到了
+			Node* next_entry = entry->next;
+
+			free(entry->key);
+			free(entry);
+
+			entry = next_entry;
+		}
+	}
+
+	//所有的袋子和名字都被清空了再来清空抽屉
+	free(ht->entries);
+	//清空柜子,最后要在函数里面自己手动置空，写ht = NULL;
+	free(ht);
+}
