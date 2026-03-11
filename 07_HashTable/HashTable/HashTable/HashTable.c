@@ -55,7 +55,7 @@ void resize(HashTable* ht)
 			entry->next = new_entries[new_slot];
 			new_entries[new_slot] = entry;
 
-			entry = entry->next;
+			entry = next_entry;
 		}
 	}
 
@@ -71,7 +71,6 @@ void resize(HashTable* ht)
 unsigned int hash(const char* key, int table_size)
 {
 	unsigned long int value = 5381;//魔法初始数字
-	unsigned int i = 0;
 	unsigned int key_len = strlen(key);
 
 	//核心
@@ -191,6 +190,7 @@ void delete_key(HashTable* ht, const char* key)
 			//顺序不能反
 			free(entry->key);
 			free(entry);
+			ht->count--;//删除后袋子数量-1
 			return;
 		}
 
