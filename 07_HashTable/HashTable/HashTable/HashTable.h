@@ -1,6 +1,8 @@
 ﻿#pragma once
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 typedef struct Node
 {
@@ -11,6 +13,22 @@ typedef struct Node
 
 typedef struct HashTable
 {
+	Node** entries;//重点！这是抽屉的集合
 	int size;//记录柜子一共有多少个抽屉
-	Node** enties;//重点！这是抽屉的集合
+	int count;//新增：检测当前用了多少个抽屉
 }HashTable;
+
+//辅助函数创建一个新节点
+Node* create_node(const char* key, int value);
+//哈希函数
+unsigned int hash(const char* key, int table_size);
+//初始化哈希表
+HashTable* create_table(int size);
+//插入（或更新）键值对
+void insert(HashTable* ht, const char* key, int value);
+//查找
+int search(HashTable* ht, const char* key, int* out_value);
+//删除
+void delete_key(HashTable* ht, const char* key);
+//清理和释放内存
+void free_table(HashTable* ht);
