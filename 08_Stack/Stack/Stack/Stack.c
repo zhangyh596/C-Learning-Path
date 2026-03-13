@@ -57,3 +57,17 @@ bool stackIsEmpty(Stack* s)
 		return false;
 	}
 }
+
+int stackPop(Stack* s)
+{
+	if (stackIsEmpty(s))
+	{
+		printf("出栈失败，栈是空的\n");
+		return -1;
+	}
+
+	//先把栈顶的数据拿出来存到一个临时变量里
+	int popValue = s->data[s->top];
+	s->top--;//游标往下走一格，代表原来的栈顶元素被“抛弃”了
+	return popValue;//把取出的数据返回给调用者
+}
