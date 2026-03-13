@@ -16,6 +16,7 @@ void stackInit(Stack* s, int capacity)
 
 	s->top = -1;//说明现在是空的
 	s->capacity = capacity;//记住最大容量
+	printf("成功初始化栈\n");
 }
 
 bool stackIsFull(Stack* s)
@@ -36,13 +37,25 @@ void stackPush(Stack* s, int value)
 {
 	if (stackIsFull(s))
 	{
-		printf("入栈失败，栈已经满了\n");
-		return;
+		int newCapacity = s->capacity * 2;
+		//我们要先用一个临时钥匙 (newData) 来接新房子的钥匙
+		int* newData = (int*)realloc(s->data, newCapacity * sizeof(int));
+
+		if (newData == NULL)
+		{
+			perror("realloc failed");
+			return;//放弃这次入栈
+		}
+
+		s->data = newData;
+		s->capacity = newCapacity;
+		printf("栈已扩容，新容量为:%d\n", s->capacity);
 	}
 
 	//移动游标并赋值
 	s->top++;
 	s->data[s->top] = value;
+	printf("入栈成功:%d\n", value);
 }
 
 bool stackIsEmpty(Stack* s)
