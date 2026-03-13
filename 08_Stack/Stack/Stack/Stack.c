@@ -19,7 +19,7 @@ void stackInit(Stack* s, int capacity)
 }
 
 bool stackIsFull(Stack* s)
-{ 
+{
 	// 逻辑：如果游标 top 已经到了数组的最后一个合法下标，就是满了。
 	// 因为数组下标从 0 开始，所以最大容量为 capacity 时，最后一个下标是 capacity - 1。
 	if (s->top == s->capacity - 1)
@@ -30,4 +30,17 @@ bool stackIsFull(Stack* s)
 	{
 		return false;
 	}
+}
+
+void stackPush(Stack* s, int value)
+{
+	if (stackIsFull)
+	{
+		printf("入栈失败，栈已经满了\n");
+		return;
+	}
+
+	//移动游标并赋值
+	s->top++;
+	s->data[s->top] = value;
 }
