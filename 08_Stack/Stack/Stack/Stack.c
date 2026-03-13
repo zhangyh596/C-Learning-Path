@@ -44,3 +44,16 @@ void stackPush(Stack* s, int value)
 	s->top++;
 	s->data[s->top] = value;
 }
+
+bool stackIsEmpty(Stack* s)
+{
+	// 逻辑：如果游标 top 还是当初初始化的 -1，说明里面一个数据都没有
+	if (s->top == -1)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
