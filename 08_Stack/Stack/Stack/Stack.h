@@ -13,6 +13,13 @@ typedef struct
 
 //初始化栈
 void stackInit(Stack* s, int capacity);
-//判断栈是否已满(辅助函数)
+//判断栈是否已满（辅助函数）
 bool stackIsFull(Stack* s);
-//
+//入栈
+void stackPush(Stack* s, int value);
+//判断栈是否为空（辅助函数）
+bool stackIsEmpty(Stack* s);
+//出栈
+int stackPop(Stack* s);
+//销毁栈
+void stackDestroy(Stack* s);

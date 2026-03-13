@@ -34,7 +34,7 @@ bool stackIsFull(Stack* s)
 
 void stackPush(Stack* s, int value)
 {
-	if (stackIsFull)
+	if (stackIsFull(s))
 	{
 		printf("入栈失败，栈已经满了\n");
 		return;
@@ -70,4 +70,18 @@ int stackPop(Stack* s)
 	int popValue = s->data[s->top];
 	s->top--;//游标往下走一格，代表原来的栈顶元素被“抛弃”了
 	return popValue;//把取出的数据返回给调用者
+}
+
+void stackDestroy(Stack* s)
+{
+	if (s->data != NULL)
+	{
+		free(s->data);
+		s->data = NULL;
+	}
+
+	//把游标和容量都恢复到初始状态
+	s->top = -1;
+	s->capacity = 0;
+	printf("栈成功销毁\n");
 }
