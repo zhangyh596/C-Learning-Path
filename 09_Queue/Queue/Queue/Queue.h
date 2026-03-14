@@ -1,0 +1,20 @@
+﻿#pragma once
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+// 第 1 个结构体：链表的节点 (相当于“火车车厢”)
+typedef struct Node
+{
+	int data;//存放真正的数据 (乘客)
+	struct Node* next;//指向下一节车厢的绳子 (钩子)
+}Node;
+
+
+// 第 2 个结构体：队列管理器 (相当于“火车站长”)
+typedef struct Queue
+{
+	Node* head;//队头指针：永远指向排在最前面的人（出队的地方）
+	Node* tail;//队尾指针：永远指向排在最后面的人（入队的地方）
+}Queue;
