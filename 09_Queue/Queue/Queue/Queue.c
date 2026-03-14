@@ -70,7 +70,7 @@ void queuePush(Queue* q, int value)
 	printf("%d入队成功\n", value);
 }
 
-int queuePop(Queue* p)
+int queuePop(Queue* q)
 {
 	if (queueIsEmpty(q))
 	{
@@ -99,4 +99,15 @@ int queuePop(Queue* p)
 
 	printf("%d出队成功\n", popValue);
 	return popValue;
+}
+
+void queueDestroy(Queue* q)
+{
+	//借助我们写的queuePop函数
+	while (!queueIsEmpty(q))
+	{
+		queuePop(q);
+	}
+
+	printf("队列成功销毁\n");
 }

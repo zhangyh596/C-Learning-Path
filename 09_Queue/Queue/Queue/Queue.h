@@ -28,4 +28,6 @@ Node* createNode(int value);
 //入队
 void queuePush(Queue* q, int value);
 //出队
-int queuePop(Queue* p);
+int queuePop(Queue* q);
+//销毁队列
+void queueDestroy(Queue* q);

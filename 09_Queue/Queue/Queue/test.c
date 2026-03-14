@@ -8,7 +8,7 @@ int main()
 	
 	queueInit(&myQueue);
 
-	if (queueIsEmpty)
+	if (queueIsEmpty(&myQueue))
 	{
 		printf("队列为空\n");
 	}
@@ -18,5 +18,9 @@ int main()
 	}
 
 	queuePush(&myQueue, 1);
+
+	queuePop(&myQueue);
+
+	queueDestroy(&myQueue);
 	return 0;
 }
