@@ -16,5 +16,6 @@ int main()
 	{
 		printf("队列不为空\n");
 	}
+
 	return 0;
 }

@@ -23,3 +23,5 @@ typedef struct Queue
 void queueInit(Queue* q);
 //判空函数
 bool queueIsEmpty(Queue* q);
+//辅助函数（创建新节点）
+Node* createNode(int value);
