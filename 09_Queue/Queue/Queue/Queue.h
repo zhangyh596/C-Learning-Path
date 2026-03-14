@@ -15,6 +15,11 @@ typedef struct Node
 // 第 2 个结构体：队列管理器 (相当于“火车站长”)
 typedef struct Queue
 {
-	Node* head;//队头指针：永远指向排在最前面的人（出队的地方）
-	Node* tail;//队尾指针：永远指向排在最后面的人（入队的地方）
+	Node* front;//队头指针：永远指向排在最前面的人（出队的地方）
+	Node* rear;//队尾指针：永远指向排在最后面的人（入队的地方）
 }Queue;
+
+//初始化队列
+void queueInit(Queue* q);
+//判空函数
+bool queueIsEmpty(Queue* q);
