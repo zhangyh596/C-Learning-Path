@@ -66,4 +66,37 @@ void queuePush(Queue* q, int value)
 		q->rear->next = newNode;
 		q->rear = newNode;
 	}
+
+	printf("%d入队成功\n", value);
+}
+
+int queuePop(Queue* p)
+{
+	if (queueIsEmpty(q))
+	{
+		printf("出队失败，队列是空的\n");
+		return -1;
+	}
+
+	// 我们必须用一个临时指针 temp 抓住现在的队头车厢，不然等会儿改变指针后就找不到它了！
+	Node* tmp = q->front;
+	int popValue = tmp->data;
+
+	//让队列向前走一步
+	q->front = q->front->next;
+
+	//【极其致命的隐藏雷区！】检查队伍是不是空了
+	// 如果刚才走的那个人，刚好是队伍里的最后一个人
+	// 那么现在 q->front 已经变成了 NULL。
+	// 此时，q->rear（队尾）还指着刚才那个马上要被销毁的车厢，变成了危险的“野指针”！
+	// 所以我们必须手动把队尾也清空：
+	if (q->front == NULL)
+	{
+		q->rear = NULL;
+	}
+
+	free(tmp);
+
+	printf("%d出队成功\n", popValue);
+	return popValue;
 }

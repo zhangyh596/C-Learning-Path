@@ -21,7 +21,11 @@ typedef struct Queue
 
 //初始化队列
 void queueInit(Queue* q);
-//判空函数
+//判空
 bool queueIsEmpty(Queue* q);
 //辅助函数（创建新节点）
 Node* createNode(int value);
+//入队
+void queuePush(Queue* q, int value);
+//出队
+int queuePop(Queue* p);

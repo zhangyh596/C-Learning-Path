@@ -17,5 +17,6 @@ int main()
 		printf("队列不为空\n");
 	}
 
+	queuePush(&myQueue, 1);
 	return 0;
 }
