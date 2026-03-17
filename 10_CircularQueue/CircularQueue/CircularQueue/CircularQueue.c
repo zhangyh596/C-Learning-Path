@@ -61,7 +61,28 @@ void queuePush(CircularQueue* q, int value)
 
 	//把value装进下标为q->value的位置
 	q->data[q->rear] = value;
+	//【核心】：工人 (rear) 往前走一步，寻找下一个空位
+	//如果走到了数组的尽头，% 取模运算会把他瞬间传送回下标 0
 	q->rear = (q->rear + 1) % q->capacity;
 
 	printf("%d入队成功\n", value);
+}
+
+int queuePop(CircularQueue* q)
+{
+	if (queueIsEmpty(q))
+	{
+		printf("出列失败，队列为空\n");
+		return -1;
+	}
+
+	//拿到即将删除的那个值
+	int popValue = q->data[q->front];
+
+	//核心：旅客(front) 拿完行李，往前走一步，准备接下一个。
+	//同样，走到要 % 传送回起点。
+	q->front = (q->front + 1) % q->capacity;
+
+	printf("%d出列成功\n", popValue);
+	return popValue;
 }

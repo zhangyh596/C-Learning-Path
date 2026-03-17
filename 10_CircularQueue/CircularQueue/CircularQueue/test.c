@@ -15,5 +15,14 @@ int main()
 
 	queuePush(&MyQueue, 1);
 
+	queuePop(&MyQueue);
+	queuePop(&MyQueue);
+	queuePop(&MyQueue);
+	queuePop(&MyQueue);
+	queuePop(&MyQueue);
+
+	queuePop(&MyQueue);
+
+
 	return 0;
 }

@@ -20,3 +20,5 @@ bool queueIsEmpty(CircularQueue* q);
 bool queueIsFull(CircularQueue* q);
 //入列函数
 void queuePush(CircularQueue* q, int value);
+//出列函数
+int queuePop(CircularQueue* q);
