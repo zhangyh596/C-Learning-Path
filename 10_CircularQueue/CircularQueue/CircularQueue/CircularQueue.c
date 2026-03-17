@@ -21,3 +21,16 @@ void queueInit(CircularQueue* q, int maxSize)
 
 	printf("环形队列初始化成功，真实容量为%d，可装载人数为%d\n", q->capacity, maxSize);
 }
+
+bool queueIsEmpty(CircularQueue* q)
+{
+	//当front和rear重合即一个人也没有为空
+	if (q->front == q->rear)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
