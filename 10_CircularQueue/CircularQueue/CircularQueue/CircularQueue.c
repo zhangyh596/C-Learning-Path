@@ -34,3 +34,19 @@ bool queueIsEmpty(CircularQueue* q)
 		return false;
 	}
 }
+
+bool queueIsFull(CircularQueue* q)
+{
+	//【核心心法】：让rear在脑海里往前“试探性”地走一步。
+	//如果往前走一步刚好撞上了front，说明转盘只剩最后那个“必须浪费的空位”了，队列已满！
+	int nextRear = (q->rear + 1) % q->capacity;
+
+	if (nextRear == q->front)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
