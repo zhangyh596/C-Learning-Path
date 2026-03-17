@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 typedef struct CircularQueue
 {
@@ -13,3 +14,9 @@ typedef struct CircularQueue
 
 //初始化环形队列
 void queueInit(CircularQueue* q, int maxSize);
+//判空函数
+bool queueIsEmpty(CircularQueue* q);
+//判满函数
+bool queueIsFull(CircularQueue* q);
+//入列函数
+void queuePush(CircularQueue* q, int value);

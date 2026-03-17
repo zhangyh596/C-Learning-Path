@@ -50,3 +50,18 @@ bool queueIsFull(CircularQueue* q)
 		return false;
 	}
 }
+
+void queuePush(CircularQueue* q, int value)
+{
+	if (queueIsFull(q))
+	{
+		printf("队列已满，入列失败\n");
+		return;
+	}
+
+	//把value装进下标为q->value的位置
+	q->data[q->rear] = value;
+	q->rear = (q->rear + 1) % q->capacity;
+
+	printf("%d入队成功\n", value);
+}
