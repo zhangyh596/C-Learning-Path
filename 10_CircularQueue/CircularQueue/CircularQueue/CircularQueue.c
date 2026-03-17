@@ -86,3 +86,17 @@ int queuePop(CircularQueue* q)
 	printf("%d出列成功\n", popValue);
 	return popValue;
 }
+
+void queueDestroy(CircularQueue* q)
+{
+	if (q->data != NULL)
+	{
+		free(q->data);
+		q->data = NULL;
+	}
+
+	q->front = 0;
+	q->rear = 0;
+	q->capacity = 0;
+	printf("队列成功被销毁\n");
+}

@@ -22,3 +22,5 @@ bool queueIsFull(CircularQueue* q);
 void queuePush(CircularQueue* q, int value);
 //出列函数
 int queuePop(CircularQueue* q);
+//销毁队列
+void queueDestroy(CircularQueue* q);
