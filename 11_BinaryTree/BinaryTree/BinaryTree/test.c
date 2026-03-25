@@ -29,5 +29,9 @@ int main()
 	{
 		printf("没有找到%d这个数字\n", target1);
 	}
+
+	freeTree(root);
+	printf("二叉树成功被释放\n");
+
 	return 0;
 }

@@ -18,3 +18,5 @@ TreeNode* insertNode(TreeNode* root, int value);
 void inorderTraversal(TreeNode* root);
 //查找指定的数字
 TreeNode* searchNode(TreeNode* root, int target);
+//销毁二叉树
+void freeTree(TreeNode* root);

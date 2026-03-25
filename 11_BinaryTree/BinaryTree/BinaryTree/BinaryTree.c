@@ -75,3 +75,13 @@ TreeNode* searchNode(TreeNode* root, int target)
 		return searchNode(root->right, target);
 	}
 }
+
+void freeTree(TreeNode* root)
+{
+	if (root != NULL)
+	{
+		freeTree(root->left);
+		freeTree(root->right);
+		free(root);
+	}
+}
