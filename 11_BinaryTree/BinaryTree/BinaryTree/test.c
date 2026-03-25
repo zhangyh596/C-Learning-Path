@@ -19,5 +19,15 @@ int main()
 	inorderTraversal(root);
 	printf("\n");
 
+	int target1 = 100;
+	TreeNode* result1 = searchNode(root, target1);
+	if (result1 != NULL)
+	{
+		printf("找到了数字%d\n", result1->data);
+	}
+	else
+	{
+		printf("没有找到%d这个数字\n", target1);
+	}
 	return 0;
 }

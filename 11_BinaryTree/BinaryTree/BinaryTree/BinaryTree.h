@@ -16,3 +16,5 @@ TreeNode* createNode(int value);
 TreeNode* insertNode(TreeNode* root, int value);
 //中序遍历打印函数
 void inorderTraversal(TreeNode* root);
+//查找指定的数字
+TreeNode* searchNode(TreeNode* root, int target);
