@@ -30,6 +30,11 @@ int main()
 		printf("没有找到%d这个数字\n", target1);
 	}
 
+	root = deleteNode(root, 20);
+	printf("删除20之后的中序遍历：\n");
+	inorderTraversal(root);
+	printf("\n");
+
 	freeTree(root);
 	printf("二叉树成功被释放\n");
 

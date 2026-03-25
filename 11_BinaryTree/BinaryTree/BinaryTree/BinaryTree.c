@@ -85,3 +85,64 @@ void freeTree(TreeNode* root)
 		free(root);
 	}
 }
+
+//辅助函数
+TreeNode* findMin(TreeNode* root)
+{
+	if (root == NULL)
+	{
+		return NULL;
+	}
+
+	while (root->left != NULL)
+	{
+		root = root->left;
+	}
+	return root;
+}
+
+TreeNode* deleteNode(TreeNode* root, int target)
+{
+	// 递归终止条件：如果树是空的，或者一直找没找到这个数字
+	if (root == NULL)
+	{
+		return root;
+	}
+
+	if (target < root->data)
+	{
+		// 目标在左边，去左子树里执行删除任务，并重新接好左边的绳子
+		root->left = deleteNode(root->left, target);
+	}
+	else if (target > root->data)
+	{
+		// 目标在右边，去右子树里执行删除任务，并重新接好右边的绳子
+		root->right = deleteNode(root->right, target);
+	}
+	else
+	{
+		// 如果没有左孩子（包含了完全没有孩子的情况）
+		if (root->left == NULL)
+		{
+			TreeNode* tmp = root->right;
+			free(root);
+			return tmp;
+		}
+		// 如果没有右孩子
+		else if (root->right == NULL)
+		{
+			TreeNode* tmp = root->left;
+			free(root);
+			return tmp;
+		}
+
+		// 走到这里，说明左右孩子都不为空
+		// 第一步：去右子树里，找那个最小的“接班人”
+		TreeNode* tmp = findMin(root->right);
+		// 第二步：把接班人的数据复制到当前节点里
+		root->data = tmp->data;
+		// 第三步：当前节点的右子树里现在多了一个重复的接班人，去把它删掉
+		root->right = deleteNode(root->right, tmp->data);
+	}
+	return root;
+}
