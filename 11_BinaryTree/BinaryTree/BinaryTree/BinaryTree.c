@@ -56,3 +56,22 @@ void inorderTraversal(TreeNode* root)
 		inorderTraversal(root->right);
 	}
 }
+
+TreeNode* searchNode(TreeNode* root, int target)
+{
+	if (root == NULL || root->data == target)
+	{
+		return root;
+	}
+
+	// 如果目标比当前节点小，顺藤摸瓜去左边找
+	if (target < root->data)
+	{
+		return searchNode(root->left, target);
+	}
+	// 如果目标比当前节点大，顺藤摸瓜去右边找
+	else
+	{
+		return searchNode(root->right, target);
+	}
+}
