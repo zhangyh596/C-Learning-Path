@@ -43,3 +43,16 @@ TreeNode* insertNode(TreeNode* root, int value)
 	// 如果新值等于当前节点的值，我们一般什么都不做，因为二叉搜索树通常不存重复数据
 	return root;
 }
+
+void inorderTraversal(TreeNode* root)
+{
+	if (root != NULL)
+	{
+		// 先一路向左，去打印比当前节点小的数
+		inorderTraversal(root->left);
+		// 打印当前节点自己的值
+		printf("%d ", root->data);
+		// 最后一路向右，去打印比当前节点大的数
+		inorderTraversal(root->right);
+	}
+}
