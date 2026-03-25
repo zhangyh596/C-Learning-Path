@@ -9,3 +9,10 @@ typedef struct TreeNode
 	struct TreeNode* left;//指针域：指向左边子节点的指针
 	struct TreeNOde* right;//指针域：指向右边子节点的指针
 }TreeNode;
+
+//创建新节点
+TreeNode* createNode(int value);
+//插入节点
+TreeNode* insertNode(TreeNode* root, int value);
+//中序遍历打印函数
+void inorderTraversal(TreeNode* root);
