@@ -330,141 +330,200 @@
 
 
 //十
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <math.h>
+//#include <stdbool.h>
+//
+//int days[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+//
+//bool isLeapYear(int year)
+//{
+//	if (year % 400 == 0 || (year % 100 != 0) && (year % 4 == 0))
+//	{
+//		return true;
+//	}
+//	return false;
+//}
+//
+//int main()
+//{
+//	int year1, month1, day1;
+//	int year2, month2, day2;
+//	scanf("%d-%d-%d", &year1, &month1, &day1);
+//	scanf("%d-%d-%d", &year2, &month2, &day2);
+//
+//	int sum = 0;
+//	if (year1 > year2)
+//	{
+//		for (int i = year2; i <= year1; i++)
+//		{
+//			if (isLeapYear(i))
+//			{
+//				days[2]++;
+//			}
+//
+//			if (i == year1)
+//			{
+//				for (int j = 0; j < month1; j++)
+//				{
+//					sum += days[j];
+//				}
+//				sum += day1;
+//			}
+//			else if (i == year2)
+//			{
+//				sum += days[month2] - day2;
+//				for (int j = month2 + 1; j <= 12; j++)
+//				{
+//					sum += days[j];
+//				}
+//			}
+//			else
+//			{
+//				sum += 365 + days[2] - 28;
+//			}
+//			if (isLeapYear(i))
+//			{
+//				days[2]--;
+//			}
+//		}
+//	}
+//	else if (year1 < year2)
+//	{
+//		for (int i = year1; i <= year2; i++)
+//		{
+//			if (isLeapYear(i))
+//			{
+//				days[2]++;
+//			}
+//
+//			if (i == year2)
+//			{
+//				for (int j = 0; j < month2; j++)
+//				{
+//					sum += days[j];
+//				}
+//				sum += day2;
+//			}
+//			else if (i == year1)
+//			{
+//				sum += days[month1] - day1;
+//				for (int j = month1 + 1; j <= 12; j++)
+//				{
+//					sum += days[j];
+//				}
+//			}
+//			else
+//			{
+//				sum += 365 + days[2] - 28;
+//			}
+//			if (isLeapYear(i))
+//			{
+//				days[2]--;
+//			}
+//		}
+//	}
+//	else
+//	{
+//		if (isLeapYear(year1))
+//		{
+//			days[2]++;
+//		}
+//
+//		if (month1 > month2)
+//		{
+//			sum += days[month2] - day2;
+//			for (int i = month2 + 1; i < month1; i++)
+//			{
+//				sum += days[i];
+//			}
+//			sum += day1;
+//		}
+//		else if (month1 < month2)
+//		{
+//			sum += days[month1] - day1;
+//			for (int i = month1 + 1; i < month2; i++)
+//			{
+//				sum += days[i];
+//			}
+//			sum += day2;
+//		}
+//		else
+//		{
+//			sum += abs(day1 - day2);
+//		}
+//
+//		if (isLeapYear(year1))
+//		{
+//			days[2]--;
+//		}
+//	}
+//
+//	printf("%d", sum);
+//
+//	return 0;
+//}
+
+
+
+//统一原点法
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-#include <stdbool.h>
 
-int days[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
-bool isLeapYear(int year)
+int isLeap(int year)
 {
-	if (year % 400 == 0 || (year % 100 != 0) && (year % 4 == 0))
+	return (year % 400 == 0) || (year % 4 == 0 && year % 100 != 0);
+}
+
+//计算1年1月1日到y年m月d日的天数
+int countDaysFromOrigin(int y, int m, int d)
+{
+	int days = 0;
+	int monthDays[13] = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+	//累加之前所有整年的天数
+	for (int i = 1; i < y; i++)
 	{
-		return true;
+		if (isLeap(i))
+		{
+			days += 366;
+		}
+		else
+		{
+			days += 365;
+		}
 	}
-	return false;
+
+	//累加今年所有整月的天数
+	for (int i = 1; i < m; i++)
+	{
+		days += monthDays[i];
+		if (isLeap(y) && i == 2)
+		{
+			days++;
+		}
+	}
+
+	//累加当月的天数
+	days += d;
+
+	return days;
 }
 
 int main()
 {
-	int year1, month1, day1;
-	int year2, month2, day2;
-	scanf("%d-%d-%d", &year1, &month1, &day1);
-	scanf("%d-%d-%d", &year2, &month2, &day2);
+	int y1, m1, d1, y2, m2, d2;
+	scanf("%d-%d-%d", &y1, &m1, &d1);
+	scanf("%d-%d-%d", &y2, &m2, &d2);
 
-	int sum = 0;
-	if (year1 > year2)
-	{
-		for (int i = year2; i <= year1; i++)
-		{
-			if (isLeapYear(i))
-			{
-				days[2]++;
-			}
+	int days1 = countDaysFromOrigin(y1, m1, d1);
+	int days2 = countDaysFromOrigin(y2, m2, d2);
 
-			if (i == year1)
-			{
-				for (int j = 0; j < month1; j++)
-				{
-					sum += days[j];
-				}
-				sum += day1;
-			}
-			else if (i == year2)
-			{
-				sum += days[month2] - day2;
-				for (int j = month2 + 1; j <= 12; j++)
-				{
-					sum += days[j];
-				}
-			}
-			else
-			{
-				sum += 365 + days[2] - 28;
-			}
-			if (isLeapYear(i))
-			{
-				days[2]--;
-			}
-		}
-	}
-	else if (year1 < year2)
-	{
-		for (int i = year1; i <= year2; i++)
-		{
-			if (isLeapYear(i))
-			{
-				days[2]++;
-			}
-
-			if (i == year2)
-			{
-				for (int j = 0; j < month2; j++)
-				{
-					sum += days[j];
-				}
-				sum += day2;
-			}
-			else if (i == year1)
-			{
-				sum += days[month1] - day1;
-				for (int j = month1 + 1; j <= 12; j++)
-				{
-					sum += days[j];
-				}
-			}
-			else
-			{
-				sum += 365 + days[2] - 28;
-			}
-			if (isLeapYear(i))
-			{
-				days[2]--;
-			}
-		}
-	}
-	else
-	{
-		if (isLeapYear(year1))
-		{
-			days[2]++;
-		}
-
-		if (month1 > month2)
-		{
-			sum += days[month2] - day2;
-			for (int i = month2 + 1; i < month1; i++)
-			{
-				sum += days[i];
-			}
-			sum += day1;
-		}
-		else if (month1 < month2)
-		{
-			sum += days[month1] - day1;
-			for (int i = month1 + 1; i < month2; i++)
-			{
-				sum += days[i];
-			}
-			sum += day2;
-		}
-		else
-		{
-			sum += abs(day1 - day2);
-		}
-
-		if (isLeapYear)
-		{
-			days[2]--;
-		}
-	}
-
-	printf("%d", sum);
+	printf("%d", abs(days1 - days2));
 
 	return 0;
 }
-
 
 
 
