@@ -54,6 +54,12 @@ void DualSelectSort(int *a, int n)
                 maxIndex = i;
             }
         }
+        // 优化：如果找了一圈发现最大值和最小值是一样的，
+        // 说明剩下的数字全长一个样，直接提前收工！
+        if (a[minIndex] == a[maxIndex])
+        {
+            break;
+        }
 
         // 将最小值交换到最左端 (left)
         if (minIndex != left)
