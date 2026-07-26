@@ -1,0 +1,3 @@
+123
+Line 2: Learning Linux is fun.
+Line 3: I will become an AI Infra engineer.
