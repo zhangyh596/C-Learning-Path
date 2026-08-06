@@ -121,10 +121,62 @@ void QuickSort(int *a, int low, int high)
     }
 }
 
+// 快速排序非递归版本实现(同时利用前后指针法的函数来实现)
+// 定义一个简单的结构体，代表待处理的数组区间 [low, high]
+typedef struct
+{
+    int low;
+    int high;
+} Range;
+
+void QuickSortIterative(int *a, int low, int high)
+{
+    if (low >= high)
+        return;
+
+    // 手写显式栈，容量最大设为区间元素个数
+    int maxCapacity = high - low + 1;
+    Range stack[maxCapacity];
+    int top = -1;
+
+    // 把初始的大任务 [low, high] 压入栈中
+    top++;
+    stack[top].low = low;
+    stack[top].high = high;
+
+    // 不断弹栈处理，直到没有未完成的子任务
+    while (top >= 0)
+    {
+        // 出栈一个区间任务
+        int cur_low = stack[top].low;
+        int cur_high = stack[top].high;
+        top--;
+
+        // 执行分区，拿到切分点 pi
+        int pi = partition_lomuto(a, cur_low, cur_high);
+
+        // 如果左半边元素个数 >= 2，把左区间压栈
+        if (pi - 1 > cur_low)
+        {
+            top++;
+            stack[top].low = cur_low;
+            stack[top].high = pi - 1;
+        }
+
+        // 如果右半边元素个数 >= 2，把右区间压栈
+        if (pi + 1 < cur_high)
+        {
+            top++;
+            stack[top].low = pi + 1;
+            stack[top].high = cur_high;
+        }
+    }
+}
+
 int main()
 {
     int arr[10] = {10, 5, 9, 6, 1, 2, 3, 7, 8, 4};
-    QuickSort(arr, 0, 9);
+    QuickSortIterative(arr, 0, 9);
     for (int i = 0; i < 10; ++i)
     {
         printf("%d ", arr[i]);
