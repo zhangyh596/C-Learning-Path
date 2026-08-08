@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 // 将两个有序子数组合并：[left, mid] 和 [mid+1, right]
-void Merge(int *a, int left, int mid, int right, int *tmp)
+void Merge(int *a, int *tmp, int left, int mid, int right)
 {
     int i = left;    // 左子数组的起点
     int j = mid + 1; // 右子数组的起点
@@ -60,12 +60,15 @@ void MergrSortRecursive(int *a, int left, int right, int *tmp)
     MergrSortRecursive(a, mid + 1, right, tmp);
 
     // 合并左半边和右半边
-    Merge(a, left, mid, right, tmp);
+    Merge(a, tmp, left, mid, right);
 }
 
 // 归并排序
 void MergeSort(int *a, int n)
 {
+    if (n < 2)
+        return;
+
     // 申请辅助内存
     int *tmp = (int *)malloc(n * sizeof(int));
     if (tmp == NULL)
@@ -80,10 +83,48 @@ void MergeSort(int *a, int n)
     free(tmp);
 }
 
+// 递归排序的非递归实现(会用到之前的Merge函数)
+// 宏定义：提取出公共的最小值函数
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+
+void MergeSortIterative(int *a, int n)
+{
+    if (n < 2)
+        return;
+
+    int *tmp = (int *)malloc(sizeof(int) * n);
+    if (tmp == NULL)
+    {
+        printf("内存分配失败\n");
+        return;
+    }
+
+    // 外层循环：控制步长 step 每次翻倍
+    for (int step = 1; step < n; step *= 2)
+    {
+        // 内层循环：以当前的 step 步长，从左到右两两合并
+        // 每次跳过 2 * step 个元素，去合并下一对
+        // 如果 left + step < n，说明右半边至少存在 1 个元素
+        // 反之，如果连右半边的起点都越界了（右边完全没元素了），那就说明当前只剩下“左半边”，就不需要任何操作
+        for (int left = 0; left < n - step; left += 2 * step)
+        {
+            int mid = left + step - 1;
+
+            // 计算右边界，右半边可能凑不够 step 个元素
+            // 所以要用 MIN 函数防止数组越界
+            int right = MIN(left + 2 * step - 1, n - 1);
+
+            Merge(a, tmp, left, mid, right);
+        }
+    }
+
+    free(tmp);
+}
+
 int main()
 {
     int arr[10] = {10, 5, 9, 6, 1, 2, 3, 7, 8, 4};
-    MergeSort(arr, 10);
+    MergeSortIterative(arr, 10);
     for (int i = 0; i < 10; ++i)
     {
         printf("%d ", arr[i]);
