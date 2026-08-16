@@ -1,0 +1,11 @@
+# LLaMA-3 8B 训练日志
+# 开始时间：2026-08-16
+
+Epoch 1 - Loss: 1.5 - Status: OK
+Epoch 2 - Loss: 1.2 - Status: OK
+ERROR: GPU 0 显存溢出 (OOM)
+Epoch 3 - Loss: 0.9 - Status: OK
+WARNING: GPU 1 温度过高 85C
+ERROR: 梯度爆炸 (NaN detected)
+
+# 训练异常中断

@@ -1,0 +1,5 @@
+PID      USER      GPU_ID   MEM_USAGE   COMMAND
+10024    root      0        15000M      python train_llama.py
+20048    zhang     1        2000M       java -jar app.jar
+30056    root      2        14500M      python run_inference.py
+40096    guest     3        15M         bash monitor.sh

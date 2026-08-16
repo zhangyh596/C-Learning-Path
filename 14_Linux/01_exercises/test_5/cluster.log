@@ -1,0 +1,5 @@
+node-1: Status OK
+node-12: WARNING (High Temp)
+node-404: ERROR (OOM)
+node-A: Invalid Name
+node-89: ERROR (Timeout)
