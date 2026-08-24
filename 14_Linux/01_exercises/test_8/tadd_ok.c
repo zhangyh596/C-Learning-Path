@@ -9,8 +9,3 @@ int tadd_ok(int x, int y)
 
     return !neg_over && !pos_over;
 }
-
-int main()
-{
-    return 0;
-}

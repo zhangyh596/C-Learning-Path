@@ -11,8 +11,3 @@ int tsub_ok(int x, int y)
 
     return !pos_over && !neg_over;
 }
-
-int main()
-{
-    return 0;
-}
