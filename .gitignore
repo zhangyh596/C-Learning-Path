@@ -1,31 +1,46 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+# ==========================================
+# C/C++ 通用编译中间产物
+# ==========================================
+*.o
+*.a
+*.so
+*.out
+*.dSYM/
+*.gch
 
-# Other files and folders
-.settings/
+# ==========================================
+# CS:APP 专属 Lab 编译工具与二进制产物
+# ==========================================
+# Data Lab
+dlc
+btest
+fshow
+ishow
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+# Bomb / Attack Lab
+bomb
+ctarget
+rtarget
+hex2raw
 
-#过滤掉不想要文件和文件夹
-*.exe
-*.sln
-*.vcxproj
-*.filters
-*.user
-*.suo
-*.db
-*.ipch
-Debug/
-.vs
-Release/
+# Cache Lab
+csim-ref
+test-csim
+test-trans
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# Shell / Malloc / Proxy Lab
+tsh
+mdriver
+proxy
+
+# 实验原始压缩包与临时数据
+*.tar
+*.tar.gz
+
+# ==========================================
+# 系统与编辑器冗余
+# ==========================================
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+.DS_Store
