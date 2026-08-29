@@ -58,7 +58,7 @@ bool bfs(int start_x, int start_y, int target_x, int target_y)
     tail++;
     visited[start_x][start_y] = 1;
 
-    // d队列不为空，循环就一直继续
+    // 队列不为空，循环就一直继续
     while (head < tail)
     {
         // 取出队头元素，并把当前队头下标存下来
