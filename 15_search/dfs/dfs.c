@@ -27,6 +27,7 @@ typedef struct Point
 Point path[ROW * COL];
 int path_len = 0;
 
+// 用栈模拟
 bool dfs(int x, int y, int target_x, int target_y)
 {
     // 碰到边界或障碍直接返回
